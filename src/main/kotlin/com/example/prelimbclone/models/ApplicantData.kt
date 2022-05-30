@@ -15,7 +15,7 @@ data class ApplicantData(
     val typeProcess: String?,
     val cuid: Int?,
 //    val expense: Expense?,
-//    val previousApplications: PreviousApplications?,
+    val previousApplications: PreviousApplications?,
 //    val previousApplicationsFraud: ArrayList<PreviousApplicationsFraud>?,
     val cars: ArrayList<Car>?,
 //    val campaigns: ArrayList<Campaign>?,

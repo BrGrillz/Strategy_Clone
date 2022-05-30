@@ -5,6 +5,8 @@ import java.time.LocalDateTime
 
 
 data class Person(
+    val activeScOffer: Int?,
+    val activeRdOffer: Int?,
     val FZcnt: Int?,
     val cntContractActiveCar: Int?,
     val cntContractActiveCash: Int?,
