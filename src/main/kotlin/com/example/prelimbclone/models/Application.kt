@@ -9,5 +9,7 @@ data class Application(
     @JsonFormat(pattern = "dd.MM.yyyy HH:mm:ss")
     val sysdate: LocalDateTime? = null,
     val person: Person? = null,
+    val trial: ArrayList<Trial>? = null,
+    val salesPoint: SalesPoint? = null
 )
 

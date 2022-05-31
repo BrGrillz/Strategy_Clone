@@ -1,6 +1,6 @@
 package com.example.prelimbclone.models
 
-data class Product(
+data class Products(
     val productFamily: String?,
     val productFamilyType: String?,
 )

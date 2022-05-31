@@ -7,4 +7,5 @@ data class Decision(
     var strategyName: String? = null,
     var strategyVersion: String? = null,
     var strategyVersionDate: String? = null,
+    var trials: ArrayList<Trial>? = null,
 )

@@ -16,9 +16,6 @@ abstract class SetStrategyDetailsTemplate (@Autowired open val application: Appl
         return Tools(application).isNewClient() == newClient
     }
 
-    fun specialCondition(){
-    }
-
     fun strategyName(strategyName: String){
         decision.strategyName = strategyName
     }

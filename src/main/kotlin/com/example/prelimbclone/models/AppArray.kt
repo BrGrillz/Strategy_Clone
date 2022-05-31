@@ -7,6 +7,6 @@ data class AppArray (
     val credit: Credit?,
     val firstApprovalStart: LocalDateTime?,
     val person: Person?,
-    val product: Product?,
+    val product: Products?,
     val salesPoint: SalesPoint?,
 )
