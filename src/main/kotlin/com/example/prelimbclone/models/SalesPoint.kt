@@ -1,6 +1,6 @@
 package com.example.prelimbclone.models
 
 data class SalesPoint(
-    val sellerplaceCode: Int?,
-    val products: ArrayList<Products>?,
+    val sellerplaceCode: Int? = null,
+    val products: ArrayList<Products>? = null,
 )

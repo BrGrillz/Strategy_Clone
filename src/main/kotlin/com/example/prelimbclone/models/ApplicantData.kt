@@ -6,18 +6,18 @@ import java.time.LocalDateTime
 
 
 data class ApplicantData(
-    val creditAmountPrefered: Int?,
-    val creditTypePrefered: String?,
+    val creditAmountPrefered: Int? = null,
+    val creditTypePrefered: String? = null,
     @JsonFormat(pattern = "dd.MM.yyyy HH:mm:ss")
-    val time: LocalDateTime?,
-    val maxValueRd: Int?,
-    val maxValueSc: Int?,
-    val typeProcess: String?,
-    val cuid: Int?,
+    val time: LocalDateTime? = null,
+    val maxValueRd: Int? = null,
+    val maxValueSc: Int? = null,
+    val typeProcess: String? = null,
+    val cuid: Int? = null,
 //    val expense: Expense?,
-    val previousApplications: PreviousApplications?,
+    val previousApplications: PreviousApplications? = null,
 //    val previousApplicationsFraud: ArrayList<PreviousApplicationsFraud>?,
-    val cars: ArrayList<Car>?,
+    val cars: ArrayList<Car>? = null,
 //    val campaigns: ArrayList<Campaign>?,
 //    val applicantCar: Car?,
 //    val bankAccountOwner: Int?,

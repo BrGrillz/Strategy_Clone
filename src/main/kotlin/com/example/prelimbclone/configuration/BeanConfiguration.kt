@@ -1,8 +1,6 @@
 package com.example.prelimbclone.configuration
 
-import com.example.prelimbclone.models.Application
-import com.example.prelimbclone.models.Decision
-import com.example.prelimbclone.models.Trial
+import com.example.prelimbclone.models.*
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -10,17 +8,12 @@ import org.springframework.context.annotation.Configuration
 class BeanConfiguration {
 
     @Bean
-    fun decision(): Decision{
-        return Decision()
-    }
-
-    @Bean
-    fun application(): Application{
-        return Application()
-    }
-
-    @Bean
-    fun trials(): ArrayList<Trial>{
+    fun approvalCharacteristics(): ArrayList<ApprovalCharacteristics>{
         return ArrayList()
+    }
+
+    @Bean
+    fun inputScoreModelReturnInfo(): RegScoreModelReturnInfo{
+        return RegScoreModelReturnInfo()
     }
 }

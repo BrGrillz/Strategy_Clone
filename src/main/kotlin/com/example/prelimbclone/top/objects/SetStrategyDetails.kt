@@ -2,43 +2,31 @@ package com.example.prelimbclone.top.objects
 
 import com.example.prelimbclone.models.Application
 import com.example.prelimbclone.models.Decision
-import com.example.prelimbclone.top.templates.SetStrategyDetailsTemplate
-import org.springframework.stereotype.Component
+import com.example.prelimbclone.tools.Tools
 
-@Component
-class SetStrategyDetails (override val application: Application, override var decision: Decision) : SetStrategyDetailsTemplate(application,
-    decision){
 
-    fun execute(){
-        line1()
-        line2()
-        line3()
-    }
+class SetStrategyDetails {
 
-    private fun line1(){
-        if (newClient(true)){
-            strategyName("MultiApproval_StreetNew")
-            strategyType("Champion")
-            strategyFlow("01.10.2018")
-            strategyVersion("STREET_NEW")
-        }
-    }
-
-    private fun line2(){
-        if (newClient(false) && (application.person?.activeScOffer == 1 || application.person?.activeRdOffer == 1)){
-            strategyName("MultiApproval_DM Current")
-            strategyType("Champion")
-            strategyFlow("01.10.2018")
-            strategyVersion("XSELL")
-        }
-    }
-
-    private fun line3(){
-        if (newClient(false)){
-            strategyName("MultiApproval_Street Current")
-            strategyType("Champion")
-            strategyFlow("01.10.2018")
-            strategyVersion("STREET_EXISTING")
+    companion object {
+        fun execute(application:Application, decision: Decision) {
+            val isNewClient = Tools.isNewClient(application.applicantData?.previousApplications?.firstDate, application.sysdate)
+            if (isNewClient) {
+                decision.strategyName = "MultiApproval_StreetNew"
+                decision.strategyType = "Champion"
+                decision.strategyVersion = "01.10.2018"
+                decision.strategyFlow = "STREET_NEW"
+            } else
+                if ((application.person?.activeScOffer == 1 || application.person?.activeRdOffer == 1)) {
+                    decision.strategyName = "MultiApproval_DM Current"
+                    decision.strategyType = "Champion"
+                    decision.strategyVersion = "01.10.2018"
+                    decision.strategyFlow = "XSELL"
+                } else {
+                    decision.strategyName = "MultiApproval_Street Current"
+                    decision.strategyType = "Champion"
+                    decision.strategyVersion = "01.10.2018"
+                    decision.strategyFlow = "STREET_EXISTING"
+                }
         }
     }
 }
