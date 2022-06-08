@@ -43,7 +43,7 @@ class ToolsTests {
         val variation = null
         val tmpApprovalCharacteristics = ArrayList<ApprovalCharacteristics>()
         val application = Application(sysdate = LocalDateTime.parse("19.03.2021 12:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")),
-            person = Person(birth = LocalDateTime.parse("20.02.1990 00:00:00", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))))
+            persons = Person(birth = LocalDateTime.parse("20.02.1990 00:00:00", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))))
 
         // when
         val result = Tools.calculateApprovalCharacteristic(name, type, variation, tmpApprovalCharacteristics, application)

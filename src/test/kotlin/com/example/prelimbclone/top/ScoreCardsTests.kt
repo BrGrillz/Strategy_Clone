@@ -11,7 +11,7 @@ class ScoreCardsTests {
     // given
     private val application = Application(
         sysdate = LocalDateTime.parse("19.03.2050 12:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")),
-        person = Person(birth = LocalDateTime.parse("20.02.2000 00:00:00", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")), education = "1", registeredAddress = "Старый Оскол"),
+        persons = Person(birth = LocalDateTime.parse("20.02.2000 00:00:00", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")), education = "1", registeredAddress = RegisteredAddress(77)),
         credit = (Credit(creditData = arrayListOf(CreditBureauData(1, 300))))
     )
 

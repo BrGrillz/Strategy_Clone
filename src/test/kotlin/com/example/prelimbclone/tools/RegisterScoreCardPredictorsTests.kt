@@ -15,7 +15,7 @@ class RegisterScoreCardPredictorsTests {
     fun ageYearsReal() {
         // given
         val application = Application(sysdate = LocalDateTime.parse("19.03.2021 12:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")),
-            person = Person(birth = LocalDateTime.parse("20.02.1990 00:00:00", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))))
+            persons = Person(birth = LocalDateTime.parse("20.02.1990 00:00:00", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))))
 
         // when
         val result = RegisterScoreCardPredictors.ageYearsReal(application)
@@ -26,7 +26,7 @@ class RegisterScoreCardPredictorsTests {
     @Test
     fun education() {
         // given
-        val application = Application(person = Person(education = "2"))
+        val application = Application(persons = Person(education = "2"))
 
         // when
         val result = RegisterScoreCardPredictors.education(application)

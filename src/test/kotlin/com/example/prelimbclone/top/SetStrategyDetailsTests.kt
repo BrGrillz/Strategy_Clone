@@ -14,7 +14,7 @@ class SetStrategyDetailsTests {
     @Test
     fun execute_withNewClient_noOffers() {
         // given
-        val application = Application(person = Person(0, 0), sysdate = LocalDateTime.parse("19.01.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
+        val application = Application(persons = Person(0, 0), sysdate = LocalDateTime.parse("19.01.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
 
         // when
         SetStrategyDetails.execute(application, decision)
@@ -30,7 +30,7 @@ class SetStrategyDetailsTests {
     fun execute_withOldClient_noOffers() {
         // given
         val application = Application(
-            person = Person(0, 0),
+            persons = Person(0, 0),
             sysdate = LocalDateTime.parse("19.03.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
@@ -50,7 +50,7 @@ class SetStrategyDetailsTests {
     fun execute_withNewClient_activeOffers() {
         // given
         val application = Application(
-            person = Person(1, 1),
+            persons = Person(1, 1),
             sysdate = LocalDateTime.parse("19.01.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2021 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
@@ -72,7 +72,7 @@ class SetStrategyDetailsTests {
         // given
         val decision = Decision()
         val application = Application(
-            person = Person(1, 1),
+            persons = Person(1, 1),
             sysdate = LocalDateTime.parse("19.03.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2021 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
