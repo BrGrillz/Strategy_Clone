@@ -1,6 +1,7 @@
 package com.example.prelimbclone.top
 
 import com.example.prelimbclone.models.Decision
+import com.example.prelimbclone.models.Score
 import com.example.prelimbclone.models.ScoreFunction
 import com.example.prelimbclone.top.objects.AssignSetScoringDetails
 import org.junit.jupiter.api.Assertions
@@ -17,10 +18,11 @@ class AssignSetScoringDetailsTests {
         AssignSetScoringDetails.execute(decision)
 
         // then
-        val scoreArray = ArrayList<ScoreFunction>()
-        scoreArray.add(ScoreFunction("ACQ_GM_4_201912", 0))
-        scoreArray.add(ScoreFunction("Application_4_0", 1))
-        Assertions.assertEquals(scoreArray, decision.score)
+        val scoreArray = arrayListOf(
+            ScoreFunction("ACQ_GM_4_201912", 0),
+            ScoreFunction("Application_4_0", 1))
+        val score = Score(scoreFunction = scoreArray)
+        Assertions.assertEquals(score, decision.score)
     }
 
     @Test
@@ -32,9 +34,11 @@ class AssignSetScoringDetailsTests {
         AssignSetScoringDetails.execute(decision)
 
         // then
-        val scoreArray = ArrayList<ScoreFunction>()
-        scoreArray.add(ScoreFunction("Client_GM_4_201908", 0))
-        scoreArray.add(ScoreFunction("Application_4_0", 1))
-        Assertions.assertEquals(scoreArray, decision.score)
+        val scoreArray = arrayListOf(
+            ScoreFunction("Client_GM_4_201908", 0),
+            ScoreFunction("Application_4_0", 1)
+        )
+        val score = Score(scoreFunction = scoreArray)
+        Assertions.assertEquals(score, decision.score)
     }
 }
