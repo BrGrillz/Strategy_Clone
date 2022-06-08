@@ -7,5 +7,5 @@ data class Decision(
     var strategyVersion: String? = null,
     var strategyFlow: String? = null,
     var trials: ArrayList<Trial> = ArrayList(),
-    var score: ArrayList<ScoreFunction> = ArrayList(),
+    var score: Score? = null,
 )

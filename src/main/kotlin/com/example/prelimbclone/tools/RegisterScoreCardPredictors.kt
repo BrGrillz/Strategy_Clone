@@ -1,24 +1,34 @@
 package com.example.prelimbclone.tools
 
 import com.example.prelimbclone.models.Application
-import com.example.prelimbclone.models.ApprovalCharacteristics
 
 
 class RegisterScoreCardPredictors {
     companion object {
-        fun execute(inputName: String, application: Application): ApprovalCharacteristics {
+        fun ageYearsReal(application: Application): Int? {
+            return application.person?.birth?.year?.let { application.sysdate?.year?.minus(it) }
+        }
 
-            return when (inputName) {
-                "AGE_YEARS_REAL" ->  ApprovalCharacteristics(value = application.sysdate?.monthValue?.let { application.person?.birth?.monthValue?.minus(it) })
+        fun education(application: Application): String? {
+            return application.person?.education
+        }
 
-
-                "EDUCATION" -> ApprovalCharacteristics(value = application.person?.education)
-
-                //Можно сделать разными способами, например обращаться в базу
-                "REG_REGION" -> ApprovalCharacteristics(value = 3)
-
-                else -> ApprovalCharacteristics()
+        fun regRegion(application: Application): Int {
+            return when (application.person?.registeredAddress){
+                "Москва" -> 2
+                "Старый Оскол" -> 1
+                else -> 3
             }
+        }
+
+        fun cbActDel(application: Application): Double {
+            var tmpResult = 0.0
+            application.credit?.creditData?.forEach {
+                if (it.creditJoin != null && it.creditJoin == 1 && it.creditSumOverdue != null && it.creditSumOverdue > 0){
+                    tmpResult += it.creditSumOverdue
+                }
+            }
+            return tmpResult
         }
     }
 }

@@ -1,9 +1,9 @@
 package com.example.prelimbclone.models
 
 data class ApprovalCharacteristics(
-    val value: Any? = null,
-    val name: String? = null,
-    val type: String? = null,
-    val variation: String? = null,
+    var name: String? = null,
+    var type: String? = null,
+    var variation: String? = null,
+    var value: Any? = null,
 ) {
 }

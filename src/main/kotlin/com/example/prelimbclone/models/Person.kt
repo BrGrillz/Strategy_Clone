@@ -57,6 +57,7 @@ data class Person(
 //    val lastSellerplaceName: String?,
 //    val lastStatus: String?,
     val education: String? = null,
+    val registeredAddress: String? = null,
     ) {
 
 

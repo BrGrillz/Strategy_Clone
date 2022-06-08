@@ -10,6 +10,6 @@ data class Application(
     val sysdate: LocalDateTime? = null,
     val person: Person? = null,
     val trial: ArrayList<Trial>? = ArrayList(),
-    val salesPoint: SalesPoint? = null
+    val salesPoint: SalesPoint? = null,
 )
 

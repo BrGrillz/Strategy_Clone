@@ -8,11 +8,11 @@ class AssignSetScoringDetails {
     companion object {
         fun execute(decision: Decision) {
             if (decision.strategyFlow?.contains("_NEW") == true) {
-                decision.score.add(ScoreFunction("ACQ_GM_4_201912", 0))
-                decision.score.add(ScoreFunction("Application_4_0", 1))
+                decision.score?.scoreFunction?.add(ScoreFunction("ACQ_GM_4_201912", 0))
+                decision.score?.scoreFunction?.add(ScoreFunction("Application_4_0", 1))
             } else {
-                decision.score.add(ScoreFunction("Client_GM_4_201908", 0))
-                decision.score.add(ScoreFunction("Application_4_0", 1))
+                decision.score?.scoreFunction?.add(ScoreFunction("Client_GM_4_201908", 0))
+                decision.score?.scoreFunction?.add(ScoreFunction("Application_4_0", 1))
             }
         }
     }

@@ -11,8 +11,7 @@ class MATrialSelectorSCRDTests {
     fun execute_PF_CL_STND_noOffer() {
         // given
         val decision = Decision()
-        val products = ArrayList<Products>()
-        products.add(Products(productFamily = "PF_CL_STND"))
+        val products = arrayListOf(Products(productFamily = "PF_CL_STND"))
         val application = Application(person = Person(0), salesPoint = SalesPoint(products = products))
 
         // when
@@ -26,8 +25,7 @@ class MATrialSelectorSCRDTests {
     fun execute_PF_CL_STND_activeOffer() {
         // given
         val decision = Decision()
-        val products = ArrayList<Products>()
-        products.add(Products(productFamily = "PF_CL_STND"))
+        val products = arrayListOf(Products(productFamily = "PF_CL_STND"))
         val application = Application(person = Person(1), salesPoint = SalesPoint(products = products))
 
         // when
@@ -41,8 +39,7 @@ class MATrialSelectorSCRDTests {
     fun execute_PF_CC_HOMER_POLZA_noOffer() {
         // given
         val decision = Decision()
-        val products = ArrayList<Products>()
-        products.add(Products(productFamily = "PF_CC_HOMER_POLZA"))
+        val products = arrayListOf(Products(productFamily = "PF_CC_HOMER_POLZA"))
         val application = Application(person = Person(0), salesPoint = SalesPoint(products = products))
 
         // when
@@ -56,8 +53,7 @@ class MATrialSelectorSCRDTests {
     fun execute_PF_CC_HOMER_POLZA_activeOffer() {
         // given
         val decision = Decision()
-        val products = ArrayList<Products>()
-        products.add(Products(productFamily = "PF_CC_HOMER_POLZA"))
+        val products = arrayListOf(Products(productFamily = "PF_CC_HOMER_POLZA"))
         val application = Application(person = Person(1), salesPoint = SalesPoint(products = products))
 
         // when
@@ -71,8 +67,7 @@ class MATrialSelectorSCRDTests {
     fun execute_PF_CC_TW_LG_noOffer() {
         // given
         val decision = Decision()
-        val products = ArrayList<Products>()
-        products.add(Products(productFamily = "PF_CC_TW_LG"))
+        val products = arrayListOf(Products(productFamily = "PF_CC_TW_LG"))
         val application = Application(person = Person(0), salesPoint = SalesPoint(products = products))
 
         // when
@@ -86,8 +81,7 @@ class MATrialSelectorSCRDTests {
     fun execute_PF_CC_TW_LG_activeOffer() {
         // given
         val decision = Decision()
-        val products = ArrayList<Products>()
-        products.add(Products(productFamily = "PF_CC_TW_LG"))
+        val products = arrayListOf(Products(productFamily = "PF_CC_TW_LG"))
         val application = Application(person = Person(1), salesPoint = SalesPoint(products = products))
 
         // when

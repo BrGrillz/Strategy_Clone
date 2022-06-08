@@ -12,22 +12,24 @@ class Tools {
             return firstDate == null || (sysDate?.monthValue != null && sysDate.monthValue - firstDate.monthValue < 1)
         }
 
-        fun calculateApprovalCharacteristic(name: String, type: String, variation: String?, tmpApprovalCharacteristics: ArrayList<ApprovalCharacteristics>, application: Application): ApprovalCharacteristics?{
-            var approvalCharacteristic = tmpApprovalCharacteristics.find { it.name == name && it.type ==type && it.variation == variation }
-            if (approvalCharacteristic != null){
-                return approvalCharacteristic
+        fun calculateApprovalCharacteristic(name: String, type: String, variation: String?, arrayOfApprovalCharacteristics: ArrayList<ApprovalCharacteristics>, application: Application): ApprovalCharacteristics{
+            var tmpApprovalCharacteristic = arrayOfApprovalCharacteristics.find { it.name == name && it.type ==type && it.variation == variation }
+            if (tmpApprovalCharacteristic != null){
+                return tmpApprovalCharacteristic
             } else {
+                tmpApprovalCharacteristic = ApprovalCharacteristics(name, type, variation)
                 when (type) {
                     "hardCheck" -> {}
-                    "scoreCardPredictor" -> {
-                        approvalCharacteristic = RegisterScoreCardPredictors.execute(name, application)
-                        tmpApprovalCharacteristics.add(approvalCharacteristic)
+                    "ScoreCardPredictor" -> {
+                        val registerScoreCardPredictors =  RegisterScoreCardPredictors.Companion::class.java.getMethod(name, Application::class.java)
+                        tmpApprovalCharacteristic.value = registerScoreCardPredictors.invoke(RegisterScoreCardPredictors, application)
+                        arrayOfApprovalCharacteristics.add(tmpApprovalCharacteristic)
                     }
                     "limitLogicCharacteristic" -> {}
                     else -> {}
                 }
             }
-            return approvalCharacteristic
+            return tmpApprovalCharacteristic
         }
     }
 }
