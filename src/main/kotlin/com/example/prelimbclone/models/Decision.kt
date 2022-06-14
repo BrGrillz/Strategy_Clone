@@ -8,4 +8,5 @@ data class Decision(
     var strategyFlow: String? = null,
     var trials: ArrayList<Trial> = ArrayList(),
     var score: Score? = null,
+    var isNewClient: Boolean? = null,
 )

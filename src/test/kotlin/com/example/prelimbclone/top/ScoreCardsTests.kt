@@ -18,7 +18,7 @@ class ScoreCardsTests {
     @Test
     fun `ACQ GM 4 201912`() {
         // given
-        val scoreFunction = ScoreFunction("ACQ_GM_4_201912", 0)
+        val scoreFunction = ScoreFunction("ACQ GM 4 201912", 0)
 
         // when
         ScoreCards.`ACQ GM 4 201912`(application, scoreFunction)
@@ -27,15 +27,15 @@ class ScoreCardsTests {
         val arrayOfPredictors = arrayListOf(
             Predictor("ageYearsReal", 50, 50),
             Predictor("education", "1", "1"),
-            Predictor("regRegion", 1, 1)
+            Predictor("regRegion", 2, 2)
         )
-        assertEquals(ScoreFunction("ACQ_GM_4_201912",0,62.0, arrayOfPredictors), scoreFunction)
+        assertEquals(ScoreFunction("ACQ GM 4 201912",0,92.0, arrayOfPredictors), scoreFunction)
     }
 
     @Test
     fun `Client GM 4 201908`() {
         // given
-        val scoreFunction = ScoreFunction("Client_GM_4_201908", 1)
+        val scoreFunction = ScoreFunction("Client GM 4 201908", 1)
 
         // when
         ScoreCards.`Client GM 4 201908`(application, scoreFunction)
@@ -43,10 +43,10 @@ class ScoreCardsTests {
         // then
         val arrayOfPredictors = arrayListOf(
             Predictor("ageYearsReal", 50, 50),
-            Predictor("regRegion", 1, 1),
+            Predictor("regRegion", 2, 2),
             Predictor("cbActDel", 300.0, 300.0)
         )
-        assertEquals(ScoreFunction("Client_GM_4_201908",1,102.0, arrayOfPredictors), scoreFunction)
+        assertEquals(ScoreFunction("Client GM 4 201908",1,132.0, arrayOfPredictors), scoreFunction)
     }
 
     @Test
@@ -60,8 +60,8 @@ class ScoreCardsTests {
         // then
         val arrayOfPredictors = arrayListOf(
             Predictor("ageYearsReal", 50, 50),
-            Predictor("regRegion", 1, 1),
+            Predictor("regRegion", 2, 2),
         )
-        assertEquals(ScoreFunction("Application 4 0",1,23.0, arrayOfPredictors), scoreFunction)
+        assertEquals(ScoreFunction("Application 4 0",1,33.0, arrayOfPredictors), scoreFunction)
     }
 }

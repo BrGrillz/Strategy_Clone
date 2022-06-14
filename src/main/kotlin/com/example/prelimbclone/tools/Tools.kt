@@ -2,14 +2,17 @@ package com.example.prelimbclone.tools
 
 import com.example.prelimbclone.models.Application
 import com.example.prelimbclone.models.ApprovalCharacteristics
+import com.example.prelimbclone.models.Decision
 import lombok.experimental.UtilityClass
 import java.time.LocalDateTime
 
 @UtilityClass
 class Tools {
     companion object{
-        fun isNewClient(firstDate: LocalDateTime?, sysDate: LocalDateTime?): Boolean {
-            return firstDate == null || (sysDate?.monthValue != null && sysDate.monthValue - firstDate.monthValue < 1)
+        fun isNewClient(application: Application, decision: Decision){
+            val sysDate =  application.sysdate
+            val firstDate =  application.applicantData?.previousApplications?.firstDate
+            decision.isNewClient = (firstDate == null || (sysDate != null && sysDate.monthValue - firstDate.monthValue < 1))
         }
 
         fun calculateApprovalCharacteristic(name: String, type: String, variation: String?, arrayOfApprovalCharacteristics: ArrayList<ApprovalCharacteristics>, application: Application): ApprovalCharacteristics{

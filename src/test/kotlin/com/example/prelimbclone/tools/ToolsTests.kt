@@ -1,8 +1,6 @@
 package com.example.prelimbclone.tools
 
-import com.example.prelimbclone.models.Application
-import com.example.prelimbclone.models.ApprovalCharacteristics
-import com.example.prelimbclone.models.Person
+import com.example.prelimbclone.models.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
@@ -13,14 +11,13 @@ class ToolsTests {
     @Test
     fun isNewClient_whenTrue() {
         // given
-        val firstDate: LocalDateTime? = null
-        val sysdate: LocalDateTime = LocalDateTime.parse("19.01.2022 12:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))
-
+        val application = Application(sysdate = LocalDateTime.parse("19.01.2022 12:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
+        val decision = Decision()
         // when
-        val result = Tools.isNewClient(firstDate, sysdate)
+        Tools.isNewClient(application, decision)
 
         // then
-        assertEquals(true, result)
+        assertEquals(true, decision.isNewClient)
     }
 
     @Test
@@ -28,12 +25,13 @@ class ToolsTests {
         // given
         val firstDate: LocalDateTime = LocalDateTime.parse("19.01.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))
         val sysdate: LocalDateTime = LocalDateTime.parse("19.03.2021 12:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))
-
+        val application = Application(sysdate = sysdate, applicantData = ApplicantData(previousApplications = PreviousApplications(firstDate = firstDate)))
+        val decision = Decision()
         // when
-        val result = Tools.isNewClient(firstDate, sysdate)
+        Tools.isNewClient(application, decision)
 
         // then
-        assertEquals(false, result)
+        assertEquals(false, decision.isNewClient)
     }
     @Test
     fun calculateApprovalCharacteristic_predictor_notExist() {

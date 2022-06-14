@@ -9,8 +9,8 @@ class SetStrategyDetails {
 
     companion object {
         fun execute(application:Application, decision: Decision) {
-            val isNewClient = Tools.isNewClient(application.applicantData?.previousApplications?.firstDate, application.sysdate)
-            if (isNewClient) {
+            val isNewClient = decision.isNewClient
+            if (isNewClient == true) {
                 decision.strategyName = "MultiApproval_StreetNew"
                 decision.strategyType = "Champion"
                 decision.strategyVersion = "01.10.2018"
