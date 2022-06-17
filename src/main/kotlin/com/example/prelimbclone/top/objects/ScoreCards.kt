@@ -1,21 +1,18 @@
 package com.example.prelimbclone.top.objects
 
 import com.example.prelimbclone.models.Application
-import com.example.prelimbclone.models.ApprovalCharacteristics
-import com.example.prelimbclone.models.Predictor
 import com.example.prelimbclone.models.ScoreFunction
-import com.example.prelimbclone.tools.Tools
+import com.example.prelimbclone.tools.Tools.Companion.calculatePredictor
 
 
 class ScoreCards {
     companion object {
-        private val tmpApprovalCharacteristics = ArrayList<ApprovalCharacteristics>()
 
         fun `ACQ GM 4 201912`(application: Application, scoreFunction: ScoreFunction){
             var initialScore = 50.0
-            val ageYearsReal = calculatePredictor("ageYearsReal", tmpApprovalCharacteristics, application, scoreFunction)
-            val education = calculatePredictor("education", tmpApprovalCharacteristics, application, scoreFunction)
-            val regRegion = calculatePredictor("regRegion", tmpApprovalCharacteristics, application, scoreFunction)
+            val ageYearsReal = calculatePredictor("ageYearsReal", scoreFunction, application)
+            val education = calculatePredictor("education", scoreFunction, application)
+            val regRegion = calculatePredictor("regRegion", scoreFunction, application)
 
             when (ageYearsReal.value){
                 in 65..200 -> initialScore += 5
@@ -40,10 +37,9 @@ class ScoreCards {
 
         fun `Client GM 4 201908`(application: Application, scoreFunction: ScoreFunction){
             var initialScore = 100.0
-            val ageYearsReal = calculatePredictor("ageYearsReal", tmpApprovalCharacteristics, application, scoreFunction)
-            val regRegion = calculatePredictor("regRegion", tmpApprovalCharacteristics, application, scoreFunction)
-            val cbActDel = calculatePredictor("cbActDel", tmpApprovalCharacteristics, application, scoreFunction)
-
+            val ageYearsReal = calculatePredictor("ageYearsReal", scoreFunction, application)
+            val regRegion = calculatePredictor("regRegion", scoreFunction, application)
+            val cbActDel = calculatePredictor("cbActDel", scoreFunction, application)
 
             when (ageYearsReal.value){
                 65 -> initialScore += 7
@@ -68,8 +64,8 @@ class ScoreCards {
 
         fun `Application 4 0`(application: Application, scoreFunction: ScoreFunction){
             var initialScore = 25.0
-            val ageYearsReal = calculatePredictor("ageYearsReal", tmpApprovalCharacteristics, application, scoreFunction)
-            val regRegion = calculatePredictor("regRegion", tmpApprovalCharacteristics, application, scoreFunction)
+            val ageYearsReal = calculatePredictor("ageYearsReal", scoreFunction, application)
+            val regRegion = calculatePredictor("regRegion", scoreFunction, application)
 
 
             when (ageYearsReal.value){
@@ -85,18 +81,6 @@ class ScoreCards {
                 else -> initialScore -= 7
             }
             scoreFunction.totalSCore = initialScore
-        }
-
-        private fun calculatePredictor(predictorName: String,
-                                       tmpApprovalCharacteristics: ArrayList<ApprovalCharacteristics>,
-                                       application: Application,
-                                       scoreFunction: ScoreFunction?,
-                                       predictorVariation: String? = null): Predictor{
-
-            val approvalCharacteristic = Tools.calculateApprovalCharacteristic(predictorName,  "ScoreCardPredictor", predictorVariation, tmpApprovalCharacteristics, application)
-            val predictor = Predictor(approvalCharacteristic.name, approvalCharacteristic.value, approvalCharacteristic.value)
-            scoreFunction?.predictors?.add(predictor)
-            return predictor
         }
     }
 }

@@ -2,15 +2,13 @@ package com.example.prelimbclone.top.objects
 
 import com.example.prelimbclone.models.Application
 import com.example.prelimbclone.models.Decision
-import com.example.prelimbclone.tools.Tools
 
 
 class SetStrategyDetails {
 
     companion object {
         fun execute(application:Application, decision: Decision) {
-            val isNewClient = decision.isNewClient
-            if (isNewClient == true) {
+            if (decision.isNewClient == true) {
                 decision.strategyName = "MultiApproval_StreetNew"
                 decision.strategyType = "Champion"
                 decision.strategyVersion = "01.10.2018"

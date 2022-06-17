@@ -9,12 +9,12 @@ import java.time.format.DateTimeFormatter
 
 //@SpringBootTest
 class SetStrategyDetailsTests {
-    private val decision = Decision()
+    private var decision = Decision()
 
     @Test
     fun execute_withNewClient_noOffers() {
         // given
-        val application = Application(persons = Person(0, 0), sysdate = LocalDateTime.parse("19.01.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
+        val application = Application(persons = Person(0, 0), sysdate = LocalDateTime.now())
 
         // when
         SetStrategyDetails.execute(application, decision)
@@ -31,12 +31,12 @@ class SetStrategyDetailsTests {
         // given
         val application = Application(
             persons = Person(0, 0),
-            sysdate = LocalDateTime.parse("19.03.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")),
+            sysdate =LocalDateTime.now(),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
             )
         )
-
+        decision.isNewClient = false
         // when
         SetStrategyDetails.execute(application, decision)
 
@@ -51,7 +51,7 @@ class SetStrategyDetailsTests {
         // given
         val application = Application(
             persons = Person(1, 1),
-            sysdate = LocalDateTime.parse("19.01.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")),
+            sysdate = LocalDateTime.now(),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2021 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
             )
@@ -73,12 +73,12 @@ class SetStrategyDetailsTests {
         val decision = Decision()
         val application = Application(
             persons = Person(1, 1),
-            sysdate = LocalDateTime.parse("19.03.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")),
+            sysdate = LocalDateTime.now(),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2021 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
             )
         )
-
+        decision.isNewClient = false
         // when
         SetStrategyDetails.execute(application, decision)
 

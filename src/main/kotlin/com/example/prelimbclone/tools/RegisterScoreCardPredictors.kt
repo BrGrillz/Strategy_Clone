@@ -5,8 +5,9 @@ import com.example.prelimbclone.models.Application
 
 class RegisterScoreCardPredictors {
     companion object {
+
         fun ageYearsReal(application: Application): Int? {
-            return application.persons?.birth?.year?.let { application.sysdate?.year?.minus(it) }
+            return application.persons?.birth?.year?.let { application.sysdate.year.minus(it) }
         }
 
         fun education(application: Application): String? {
@@ -15,8 +16,8 @@ class RegisterScoreCardPredictors {
 
         fun regRegion(application: Application): Int {
             return when (application.persons?.registeredAddress?.region){
-                77 -> 2
-                36 -> 1
+                "77" -> 2
+                "36" -> 1
                 else -> 3
             }
         }

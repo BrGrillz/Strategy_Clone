@@ -19,9 +19,11 @@ class AssignSetScoringDetailsTests {
 
         // then
         val scoreArray = arrayListOf(
-            ScoreFunction("ACQ_GM_4_201912", 0),
-            ScoreFunction("Application_4_0", 1))
+            ScoreFunction("ACQ GM 4 201912", 0),
+            ScoreFunction("Application 4 0", 1))
+
         val score = Score(scoreFunction = scoreArray)
+
         Assertions.assertEquals(score, decision.score)
     }
 
@@ -35,8 +37,8 @@ class AssignSetScoringDetailsTests {
 
         // then
         val scoreArray = arrayListOf(
-            ScoreFunction("Client_GM_4_201908", 0),
-            ScoreFunction("Application_4_0", 1)
+            ScoreFunction("Client GM 4 201908", 0),
+            ScoreFunction("Application 4 0", 1)
         )
         val score = Score(scoreFunction = scoreArray)
         Assertions.assertEquals(score, decision.score)

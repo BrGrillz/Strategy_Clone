@@ -1,5 +1,5 @@
 package com.example.prelimbclone.models
 
-data class RegisteredAddress(
+data class ContactAddress(
     val region: String? = null,
 )
