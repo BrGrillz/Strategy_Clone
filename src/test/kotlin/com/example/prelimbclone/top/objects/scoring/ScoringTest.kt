@@ -1,7 +1,6 @@
-package com.example.prelimbclone.top
+package com.example.prelimbclone.top.objects.scoring
 
 import com.example.prelimbclone.models.*
-import com.example.prelimbclone.top.objects.Scoring
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -9,13 +8,13 @@ import org.junit.jupiter.api.Test
 internal class ScoringTest{
 
     @Test
-    fun execute() {
+    fun execute_test() {
         // given
         val arrayOfScoreFunctions = arrayListOf(
             ScoreFunction("ACQ GM 4 201912", 0),
             ScoreFunction("Application 4 0", 1)
         )
-        val arrayOfTrials = arrayListOf(Trial("TR_CC_HOMER_POLZA_STND"))
+        val arrayOfTrials = arrayListOf(Trial("TR_CC_HOMER_POLZA_STND", "", ""))
         val application = Application()
         val decision = Decision(score = Score(scoreFunction = arrayOfScoreFunctions), trials = arrayOfTrials)
 
@@ -25,11 +24,11 @@ internal class ScoringTest{
         // then
         var flag = true
         decision.trials.forEach {
-            if (it.scoringDetails?.scoreFunction != decision.score?.primaryScoreFunction || it.scoringDetails?.scoreValue != decision.score?.primaryScore){flag = false}
+            if (it.scoringDetails.scoreFunction != decision.score.primaryScoreFunction || it.scoringDetails.scoreValue != decision.score.primaryScore){flag = false}
         }
 
-        assertEquals(63.0, decision.score?.primaryScore)
-        assertEquals("ACQ GM 4 201912", decision.score?.primaryScoreFunction)
+        assertEquals(63.0, decision.score.primaryScore)
+        assertEquals("ACQ GM 4 201912", decision.score.primaryScoreFunction)
         assertEquals(true, flag)
     }
 }

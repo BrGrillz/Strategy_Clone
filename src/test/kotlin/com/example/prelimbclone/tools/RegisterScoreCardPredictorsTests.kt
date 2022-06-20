@@ -1,27 +1,25 @@
 package com.example.prelimbclone.tools
 
-import com.example.prelimbclone.models.Application
-import com.example.prelimbclone.models.Credit
-import com.example.prelimbclone.models.CreditBureauData
-import com.example.prelimbclone.models.Person
+import com.example.prelimbclone.models.*
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import java.time.Period
 
 class RegisterScoreCardPredictorsTests {
 
     @Test
     fun ageYearsReal() {
         // given
-        val application = Application(sysdate = LocalDateTime.parse("19.03.2021 12:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")),
-            persons = Person(birth = LocalDateTime.parse("20.02.1990 00:00:00", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))))
+        val application = Application(sysdate = LocalDateTime.of(2022,2,20,0,0,0),
+            persons = Person(birth = LocalDate.of(1990,2,20)))
 
         // when
         val result = RegisterScoreCardPredictors.ageYearsReal(application)
 
         // then
-        Assertions.assertEquals(31, result)
+        Assertions.assertEquals(32, result)
     }
     @Test
     fun education() {
@@ -53,7 +51,7 @@ class RegisterScoreCardPredictorsTests {
             CreditBureauData(2, 2),
             CreditBureauData(1, 0),
         )
-        val application = Application(credit = Credit(creditData = arrayOfCreditData))
+        val application = Application(credit = Credit(creditBureau = CreditBureau(arrayOfCreditData)))
 
         // when
         val result = RegisterScoreCardPredictors.cbActDel(application)
@@ -70,7 +68,7 @@ class RegisterScoreCardPredictorsTests {
             CreditBureauData(2, 2),
             CreditBureauData(1, 0),
         )
-        val application = Application(credit = Credit(creditData = arrayOfCreditData))
+        val application = Application(credit = Credit(creditBureau = CreditBureau(arrayOfCreditData)))
 
         // when
         val result = RegisterScoreCardPredictors.cbActDel(application)

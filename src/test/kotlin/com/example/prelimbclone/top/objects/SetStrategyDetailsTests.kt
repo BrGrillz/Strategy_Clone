@@ -1,4 +1,4 @@
-package com.example.prelimbclone.top
+package com.example.prelimbclone.top.objects
 
 import com.example.prelimbclone.models.*
 import com.example.prelimbclone.top.objects.SetStrategyDetails
@@ -14,7 +14,7 @@ class SetStrategyDetailsTests {
     @Test
     fun execute_withNewClient_noOffers() {
         // given
-        val application = Application(persons = Person(0, 0), sysdate = LocalDateTime.now())
+        val application = Application(persons = Person(0, 0), sysdate = LocalDateTime.of(2022,2,20,0,0,0))
 
         // when
         SetStrategyDetails.execute(application, decision)
@@ -31,7 +31,7 @@ class SetStrategyDetailsTests {
         // given
         val application = Application(
             persons = Person(0, 0),
-            sysdate =LocalDateTime.now(),
+            sysdate = LocalDateTime.of(2022,2,20,0,0,0),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
             )
@@ -51,7 +51,7 @@ class SetStrategyDetailsTests {
         // given
         val application = Application(
             persons = Person(1, 1),
-            sysdate = LocalDateTime.now(),
+            sysdate = LocalDateTime.of(2022,2,20,0,0,0),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2021 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
             )
@@ -73,7 +73,7 @@ class SetStrategyDetailsTests {
         val decision = Decision()
         val application = Application(
             persons = Person(1, 1),
-            sysdate = LocalDateTime.now(),
+            sysdate = LocalDateTime.of(2022,2,20,0,0,0),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2021 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
             )

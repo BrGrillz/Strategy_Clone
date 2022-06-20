@@ -1,4 +1,4 @@
-package com.example.prelimbclone.top.objects
+package com.example.prelimbclone.top.objects.scoring
 
 import com.example.prelimbclone.models.Application
 import com.example.prelimbclone.models.ScoreFunction

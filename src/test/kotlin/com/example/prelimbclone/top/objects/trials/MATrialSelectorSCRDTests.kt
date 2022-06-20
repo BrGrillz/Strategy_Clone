@@ -1,7 +1,6 @@
-package com.example.prelimbclone.top
+package com.example.prelimbclone.top.objects.trials
 
 import com.example.prelimbclone.models.*
-import com.example.prelimbclone.top.objects.MATrialSelectorSCRD
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -32,7 +31,7 @@ class MATrialSelectorSCRDTests {
         MATrialSelectorSCRD.execute(application, decision)
 
         // then
-        Assertions.assertEquals(Trial(name = "TR_CL_STND"), decision.trials.find { it.name == "TR_CL_STND" })
+        Assertions.assertEquals(Trial(name = "TR_CL_STND", "", ""), decision.trials.find { it.name == "TR_CL_STND" })
     }
 
     @Test
@@ -60,7 +59,7 @@ class MATrialSelectorSCRDTests {
         MATrialSelectorSCRD.execute(application, decision)
 
         // then
-        Assertions.assertEquals(Trial(name = "TR_CC_HOMER_POLZA_STND"), decision.trials.find { it.name == "TR_CC_HOMER_POLZA_STND" })
+        Assertions.assertEquals(Trial(name = "TR_CC_HOMER_POLZA_STND", "", ""), decision.trials.find { it.name == "TR_CC_HOMER_POLZA_STND" })
     }
 
     @Test
@@ -88,6 +87,6 @@ class MATrialSelectorSCRDTests {
         MATrialSelectorSCRD.execute(application, decision)
 
         // then
-        Assertions.assertEquals(Trial(name = "TR_CC_TW_LG_STND"), decision.trials.find { it.name == "TR_CC_TW_LG_STND" })
+        Assertions.assertEquals(Trial(name = "TR_CC_TW_LG_STND", "", ""), decision.trials.find { it.name == "TR_CC_TW_LG_STND" })
     }
 }

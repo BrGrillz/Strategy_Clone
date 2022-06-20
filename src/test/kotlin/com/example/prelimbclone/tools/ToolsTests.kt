@@ -3,6 +3,7 @@ package com.example.prelimbclone.tools
 import com.example.prelimbclone.models.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -12,9 +13,9 @@ class ToolsTests {
     fun calculatePredictor() {
         // given
         val name = "ageYearsReal"
-        val scoreFunction = ScoreFunction()
-        val application = Application(sysdate = LocalDateTime.now(),
-            persons = Person(birth = LocalDateTime.parse("20.02.1990 00:00:00", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))))
+        val scoreFunction = ScoreFunction("")
+        val application = Application(sysdate = LocalDateTime.of(2022,2,20,0,0,0),
+            persons = Person(birth = LocalDate.of(1990,2,20)))
 
         // when
         val result = Tools.calculatePredictor(name, scoreFunction, application)

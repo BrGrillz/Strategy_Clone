@@ -1,18 +1,17 @@
-package com.example.prelimbclone.top
+package com.example.prelimbclone.top.objects.scoring
 
 import com.example.prelimbclone.models.*
-import com.example.prelimbclone.top.objects.ScoreCards
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 class ScoreCardsTests {
     // given
     private val application = Application(
-        sysdate = LocalDateTime.parse("19.03.2050 12:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")),
-        persons = Person(birth = LocalDateTime.parse("20.02.2000 00:00:00", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")), education = "1", registeredAddress = RegisteredAddress(77)),
-        credit = (Credit(creditData = arrayListOf(CreditBureauData(1, 300))))
+        sysdate = LocalDateTime.of(2050,3,19,12,43,6),
+        persons = Person(birth = LocalDate.of(2000,2,20), education = "1", registeredAddress = RegisteredAddress("77")),
+        credit = (Credit(creditBureau =  CreditBureau(creditData = arrayListOf(CreditBureauData(1, 300)))))
     )
 
     @Test

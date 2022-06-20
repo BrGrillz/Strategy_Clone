@@ -1,9 +1,8 @@
-package com.example.prelimbclone.top
+package com.example.prelimbclone.top.objects.scoring
 
 import com.example.prelimbclone.models.Decision
 import com.example.prelimbclone.models.Score
 import com.example.prelimbclone.models.ScoreFunction
-import com.example.prelimbclone.top.objects.AssignSetScoringDetails
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 

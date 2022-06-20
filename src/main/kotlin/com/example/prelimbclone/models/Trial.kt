@@ -2,8 +2,11 @@ package com.example.prelimbclone.models
 
 data class Trial(
     val name: String,
-    var scoringDetails: ScoringDetails? = null,
-    var strategyName: String? = null,
-    var strategyFlow: String? = null,
-    var hcDetails: HCDetails? = null,
+    var strategyName: String,
+    var strategyFlow: String,
+    var scoringDetails: ScoringDetails = ScoringDetails(),
+    val hcDetails: HCDetails = HCDetails(),
+    val rgDetails: RGDetails = RGDetails(),
+    val wfDetails: WFDetails = WFDetails(),
+    var creditType: String? = null,
 )
