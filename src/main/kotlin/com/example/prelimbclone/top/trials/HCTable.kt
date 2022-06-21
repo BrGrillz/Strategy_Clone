@@ -1,4 +1,4 @@
-package com.example.prelimbclone.top.objects.trials
+package com.example.prelimbclone.top.trials
 
 import com.example.prelimbclone.hardchecks.TK0001_Applicants_LowAge
 import com.example.prelimbclone.hardchecks.TK013_CurrentEmploymentDuration
@@ -9,7 +9,8 @@ import com.example.prelimbclone.models.*
 class HCTable {
     companion object{
         fun execute(trial: Trial, application: Application, decision: Decision){
-            TK0001_Applicants_LowAge.execute(application, 18).let { trial.hcDetails.lineID.add("COMMON_LINE_HCS") }
+            TK0001_Applicants_LowAge.execute(application, 18)?.let { trial.hcDetails.hardCheck.add(it) }
+            trial.hcDetails.lineID.add("COMMON_LINE_HCS")
             when (trial.name) {
                 "TR_CC_HOMER_POLZA_STND" -> {
                     TK013_CurrentEmploymentDuration.execute(application, 3)?.let { trial.hcDetails.hardCheck.add(it) } //TK13 EMPDUR 3

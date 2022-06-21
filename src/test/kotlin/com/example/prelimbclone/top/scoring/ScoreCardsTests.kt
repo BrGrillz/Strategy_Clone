@@ -1,4 +1,4 @@
-package com.example.prelimbclone.top.objects.scoring
+package com.example.prelimbclone.top.scoring
 
 import com.example.prelimbclone.models.*
 import org.junit.jupiter.api.Assertions.assertEquals

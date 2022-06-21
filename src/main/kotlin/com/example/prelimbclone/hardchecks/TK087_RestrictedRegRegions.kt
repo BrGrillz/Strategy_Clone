@@ -12,9 +12,8 @@ class TK087_RestrictedRegRegions {
                 decision.creditType == "SS" &&
                 application.salesPoint?.sellerplaceTown == "Грозный" &&
                 application.salesPoint.sellerplaceCode in listOf(940001, 940002, 940006)
-            ){
-                HardCheck("TK087_RestrictedRegRegions_$region", "CLOCLIREG", "Applicant restricted from a loan due to region $region")
-            } else null
+            ) HardCheck("TK087_RestrictedRegRegions_$region", "CLOCLIREG", "Applicant restricted from a loan due to region $region")
+            else null
         }
     }
 }

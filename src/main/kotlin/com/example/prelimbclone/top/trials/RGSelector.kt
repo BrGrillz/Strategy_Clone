@@ -1,4 +1,4 @@
-package com.example.prelimbclone.top.objects.trials
+package com.example.prelimbclone.top.trials
 
 import com.example.prelimbclone.models.Trial
 

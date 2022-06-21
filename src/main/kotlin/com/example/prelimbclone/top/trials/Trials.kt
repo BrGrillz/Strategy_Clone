@@ -1,23 +1,23 @@
-package com.example.prelimbclone.top.objects.trials
+package com.example.prelimbclone.top.trials
 
-import com.example.prelimbclone.models.*
-import com.example.prelimbclone.hardchecks.TK0001_Applicants_LowAge
-import com.example.prelimbclone.hardchecks.TK013_CurrentEmploymentDuration
+import com.example.prelimbclone.models.Application
+import com.example.prelimbclone.models.Decision
+import com.example.prelimbclone.models.Trial
 
 
 class Trials {
     companion object{
         fun execute(application: Application, decision: Decision){
             decision.trials.forEach {
-                getTrial(it, decision)
+                getTrial(it)
                 AssignStrategyDetailsTrial.execute(it, application, decision)
                 HCTable.execute(it, application, decision)
                 RGSelector.execute(it)
-                WFSelectorTrial.execute(it,decision)
+                WFSelectorTrial.execute(it, decision)
             }
         }
 
-        private fun getTrial(trial: Trial, decision: Decision){
+        private fun getTrial(trial: Trial){
             with (trial.name){
                 when {
                     contains("TR_CL") -> trial.creditType = "SC"

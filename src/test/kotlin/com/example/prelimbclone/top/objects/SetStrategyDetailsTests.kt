@@ -1,7 +1,6 @@
 package com.example.prelimbclone.top.objects
 
 import com.example.prelimbclone.models.*
-import com.example.prelimbclone.top.objects.SetStrategyDetails
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
@@ -9,11 +8,11 @@ import java.time.format.DateTimeFormatter
 
 //@SpringBootTest
 class SetStrategyDetailsTests {
-    private var decision = Decision()
 
     @Test
     fun execute_withNewClient_noOffers() {
         // given
+        val decision = Decision(isNewClient = true)
         val application = Application(persons = Person(0, 0), sysdate = LocalDateTime.of(2022,2,20,0,0,0))
 
         // when
@@ -29,6 +28,7 @@ class SetStrategyDetailsTests {
     @Test
     fun execute_withOldClient_noOffers() {
         // given
+        val decision = Decision(isNewClient = false)
         val application = Application(
             persons = Person(0, 0),
             sysdate = LocalDateTime.of(2022,2,20,0,0,0),
@@ -36,7 +36,7 @@ class SetStrategyDetailsTests {
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
             )
         )
-        decision.isNewClient = false
+
         // when
         SetStrategyDetails.execute(application, decision)
 
@@ -49,6 +49,7 @@ class SetStrategyDetailsTests {
     @Test
     fun execute_withNewClient_activeOffers() {
         // given
+        val decision = Decision(isNewClient = true)
         val application = Application(
             persons = Person(1, 1),
             sysdate = LocalDateTime.of(2022,2,20,0,0,0),
@@ -70,7 +71,7 @@ class SetStrategyDetailsTests {
     @Test
     fun execute_withOldClient_activeOffers() {
         // given
-        val decision = Decision()
+        val decision = Decision(isNewClient = false)
         val application = Application(
             persons = Person(1, 1),
             sysdate = LocalDateTime.of(2022,2,20,0,0,0),
@@ -78,7 +79,7 @@ class SetStrategyDetailsTests {
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2021 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
             )
         )
-        decision.isNewClient = false
+
         // when
         SetStrategyDetails.execute(application, decision)
 

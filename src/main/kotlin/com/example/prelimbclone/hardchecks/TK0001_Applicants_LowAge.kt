@@ -10,7 +10,7 @@ class TK0001_Applicants_LowAge{
             return if (
                 application.persons?.birth != null &&
                 application.sysdate != null &&
-                Period.between(application.persons.birth, application.sysdate.toLocalDate()).years >= age
+                Period.between(application.persons.birth, application.sysdate.toLocalDate()).years < age
             ) HardCheck("TK1_AGELOW_$age", "AGELOW", "Applicant age is lower than $age")
             else null
         }
