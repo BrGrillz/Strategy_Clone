@@ -1,7 +1,6 @@
 package com.example.prelimbclone.tools
 
 import com.example.prelimbclone.models.Application
-import java.time.LocalDate
 import java.time.Period
 
 
@@ -9,17 +8,17 @@ class RegisterScoreCardPredictors {
     companion object {
 
         fun ageYearsReal(application: Application): Int? {
-            return if (application.persons?.birth != null && application.sysdate != null)
-                Period.between(application.persons.birth, application.sysdate.toLocalDate()).years
+            return if (application.persons?.get(0)?.birth != null && application.sysdate != null)
+                Period.between(application.persons[0].birth, application.sysdate.toLocalDate()).years
             else null
         }
 
         fun education(application: Application): String? {
-            return application.persons?.education
+            return application.persons?.get(0)?.education
         }
 
         fun regRegion(application: Application): Int {
-            return when (application.persons?.registeredAddress?.region){
+            return when (application.persons?.get(0)?.registeredAddress?.region){
                 "77" -> 2
                 "36" -> 1
                 else -> 3

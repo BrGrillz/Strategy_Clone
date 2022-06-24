@@ -22,5 +22,5 @@ data class Decision(
     val application: Application? = null,
     @JsonIgnore
     val isNewClient: Boolean? = (application?.applicantData?.previousApplications?.firstDate == null ||
-            (application.persons?.birth != null && application.sysdate != null && Period.between(application.persons.birth, application.sysdate.toLocalDate()).months < 1))
+            (application.persons?.get(0)?.birth != null && application.sysdate != null && Period.between(application.persons[0].birth, application.sysdate.toLocalDate()).months < 1))
 )
