@@ -49,6 +49,6 @@ tasks.withType<Test> {
 
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-Class"] = "com.example.prelimbclone.PrelimBCloneApplication.kt"
+        attributes["Main-Class"] = "com.example.PrelimBCloneApplication"
     }
 }
