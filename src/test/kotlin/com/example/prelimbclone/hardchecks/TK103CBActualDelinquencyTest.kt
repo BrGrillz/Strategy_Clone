@@ -16,7 +16,6 @@ class TK103CBActualDelinquencyTest{
             CreditBureauData(creditSumOverdue = 200, creditDayOverdue = 5),
         ))))
 
-
         // when
         val result = TK103_CB_Actual_Delinquency.execute(sumOverdue, maxDaysOverdue, application)
 
