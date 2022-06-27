@@ -14,7 +14,7 @@ class TK0001ApplicantsLowAgeTest{
         // given
         val age = 18
         val application = Application(sysdate = LocalDateTime.of(2022,2,20,0,0,0),
-            persons = Person(birth = LocalDate.of(2010,2,20)))
+            persons = arrayListOf(Person(birth = LocalDate.of(2010,2,20))))
 
         // when
         val result = TK0001_Applicants_LowAge.execute(application, age)
@@ -28,7 +28,7 @@ class TK0001ApplicantsLowAgeTest{
         // given
         val age = 18
         val application = Application(sysdate = LocalDateTime.of(2022,2,20,0,0,0),
-            persons = Person(birth = LocalDate.of(2000,2,20)))
+            persons = arrayListOf(Person(birth = LocalDate.of(2000,2,20))))
 
         // when
         val result = TK0001_Applicants_LowAge.execute(application, age)

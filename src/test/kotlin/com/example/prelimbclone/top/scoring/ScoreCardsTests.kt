@@ -10,7 +10,7 @@ class ScoreCardsTests {
     // given
     private val application = Application(
         sysdate = LocalDateTime.of(2050,3,19,12,43,6),
-        persons = Person(birth = LocalDate.of(2000,2,20), education = "1", registeredAddress = RegisteredAddress("77")),
+        persons = arrayListOf(Person(birth = LocalDate.of(2000,2,20), education = "1", registeredAddress = RegisteredAddress("77"))),
         credit = (Credit(creditBureau =  CreditBureau(creditData = arrayListOf(CreditBureauData(1, 300)))))
     )
 

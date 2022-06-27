@@ -13,7 +13,7 @@ class SetStrategyDetailsTests {
     fun execute_withNewClient_noOffers() {
         // given
         val decision = Decision(isNewClient = true)
-        val application = Application(persons = Person(0, 0), sysdate = LocalDateTime.of(2022,2,20,0,0,0))
+        val application = Application(persons = arrayListOf(Person(0, 0)), sysdate = LocalDateTime.of(2022,2,20,0,0,0))
 
         // when
         SetStrategyDetails.execute(application, decision)
@@ -30,7 +30,7 @@ class SetStrategyDetailsTests {
         // given
         val decision = Decision(isNewClient = false)
         val application = Application(
-            persons = Person(0, 0),
+            persons = arrayListOf(Person(0, 0)),
             sysdate = LocalDateTime.of(2022,2,20,0,0,0),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2022 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
@@ -51,7 +51,7 @@ class SetStrategyDetailsTests {
         // given
         val decision = Decision(isNewClient = true)
         val application = Application(
-            persons = Person(1, 1),
+            persons = arrayListOf(Person(1, 1)),
             sysdate = LocalDateTime.of(2022,2,20,0,0,0),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2021 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
@@ -73,7 +73,7 @@ class SetStrategyDetailsTests {
         // given
         val decision = Decision(isNewClient = false)
         val application = Application(
-            persons = Person(1, 1),
+            persons = arrayListOf(Person(1, 1)),
             sysdate = LocalDateTime.of(2022,2,20,0,0,0),
             applicantData = ApplicantData(
                 previousApplications = PreviousApplications(LocalDateTime.parse("19.01.2021 11:43:06", DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")))
