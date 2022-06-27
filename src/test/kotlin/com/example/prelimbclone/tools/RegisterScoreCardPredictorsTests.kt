@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.Period
 
 class RegisterScoreCardPredictorsTests {
 
@@ -13,7 +12,7 @@ class RegisterScoreCardPredictorsTests {
     fun ageYearsReal() {
         // given
         val application = Application(sysdate = LocalDateTime.of(2022,2,20,0,0,0),
-            persons = Person(birth = LocalDate.of(1990,2,20)))
+            persons = arrayListOf(Person(birth = LocalDate.of(1990,2,20))))
 
         // when
         val result = RegisterScoreCardPredictors.ageYearsReal(application)
@@ -24,7 +23,7 @@ class RegisterScoreCardPredictorsTests {
     @Test
     fun education() {
         // given
-        val application = Application(persons = Person(education = "2"))
+        val application = Application(persons = arrayListOf(Person(education = "2")))
 
         // when
         val result = RegisterScoreCardPredictors.education(application)

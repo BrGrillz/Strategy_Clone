@@ -16,7 +16,7 @@ class TK013CurrentEmploymentDurationTest{
         // given
         val month = 10
         val application = Application(sysdate = LocalDateTime.of(2022,2,20,0,0,0),
-            persons = Person(employment = Employment(LocalDateTime.of(2022,1,20,0,0,0))))
+            persons = arrayListOf(Person(employment = Employment(LocalDateTime.of(2022,1,20,0,0,0)))))
 
         // when
         val result = TK013_CurrentEmploymentDuration.execute(application, month)
@@ -30,7 +30,7 @@ class TK013CurrentEmploymentDurationTest{
         // given
         val month = 2
         val application = Application(sysdate = LocalDateTime.of(2022,5,20,0,0,0),
-            persons = Person(employment = Employment(LocalDateTime.of(2022,1,20,0,0,0))))
+            persons = arrayListOf(Person(employment = Employment(LocalDateTime.of(2022,1,20,0,0,0)))))
 
         // when
         val result = TK013_CurrentEmploymentDuration.execute(application, month)

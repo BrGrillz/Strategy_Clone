@@ -13,7 +13,7 @@ class AssignStrategyDetailsTrialTest{
         // given
         val decision = Decision(isNewClient = true)
         val trial = Trial("TR_CL_STND", "", "")
-        val application = Application(persons = Person(activeScOffer = 0))
+        val application = Application(persons = arrayListOf(Person(activeScOffer = 0)))
 
         // when
         AssignStrategyDetailsTrial.execute(trial, application, decision)
@@ -28,7 +28,7 @@ class AssignStrategyDetailsTrialTest{
         // given
         val decision = Decision(isNewClient = false)
         val trial = Trial("TR_CL_STND", "", "")
-        val application = Application(persons = Person(activeScOffer = 0))
+        val application = Application(persons = arrayListOf(Person(activeScOffer = 0)))
 
         // when
         AssignStrategyDetailsTrial.execute(trial, application, decision)
@@ -42,7 +42,7 @@ class AssignStrategyDetailsTrialTest{
         // given
         val decision = Decision(isNewClient = false)
         val trial = Trial("TR_CL_STND", "", "")
-        val application = Application(persons = Person(activeScOffer = 1))
+        val application = Application(persons = arrayListOf(Person(activeScOffer = 1)))
 
         // when
         AssignStrategyDetailsTrial.execute(trial, application, decision)

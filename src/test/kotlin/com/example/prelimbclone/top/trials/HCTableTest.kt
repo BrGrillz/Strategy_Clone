@@ -11,7 +11,7 @@ internal class HCTableTest{
     fun execute_hcHit() {
         // given
         val application = Application(sysdate = LocalDateTime.of(2022,2,20,0,0,0),
-            persons = Person(employment = Employment(LocalDateTime.of(2022,1,20,0,0,0))))
+            persons = arrayListOf(Person(employment = Employment(LocalDateTime.of(2022,1,20,0,0,0)))))
         val decision = Decision()
         val trial = Trial("TR_CC_HOMER_POLZA_STND", "", "")
 

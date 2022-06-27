@@ -8,8 +8,8 @@ data class Application(
     val credit: Credit? = null,
     @JsonFormat(pattern = "dd.MM.yyyy HH:mm:ss")
     val sysdate: LocalDateTime? = null,
-    val persons: ArrayList<Person>? = ArrayList(),
-    val trial: ArrayList<Trial>? = ArrayList(),
+    val persons: ArrayList<Person> = arrayListOf(Person()),
+    val trial: ArrayList<Trial> = ArrayList(),
     val salesPoint: SalesPoint? = null,
 )
 

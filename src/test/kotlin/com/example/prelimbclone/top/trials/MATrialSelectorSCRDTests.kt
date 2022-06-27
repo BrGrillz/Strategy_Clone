@@ -11,7 +11,7 @@ class MATrialSelectorSCRDTests {
         // given
         val decision = Decision()
         val products = arrayListOf(Products(productFamily = "PF_CL_STND"))
-        val application = Application(persons = Person(0), salesPoint = SalesPoint(products = products))
+        val application = Application(persons = arrayListOf(Person(0)), salesPoint = SalesPoint(products = products))
 
         // when
         MATrialSelectorSCRD.execute(application, decision)
@@ -25,7 +25,7 @@ class MATrialSelectorSCRDTests {
         // given
         val decision = Decision()
         val products = arrayListOf(Products(productFamily = "PF_CL_STND"))
-        val application = Application(persons = Person(1), salesPoint = SalesPoint(products = products))
+        val application = Application(persons = arrayListOf(Person(1)), salesPoint = SalesPoint(products = products))
 
         // when
         MATrialSelectorSCRD.execute(application, decision)
@@ -39,7 +39,7 @@ class MATrialSelectorSCRDTests {
         // given
         val decision = Decision()
         val products = arrayListOf(Products(productFamily = "PF_CC_HOMER_POLZA"))
-        val application = Application(persons = Person(0), salesPoint = SalesPoint(products = products))
+        val application = Application(persons = arrayListOf(Person(0)), salesPoint = SalesPoint(products = products))
 
         // when
         MATrialSelectorSCRD.execute(application, decision)
@@ -53,7 +53,7 @@ class MATrialSelectorSCRDTests {
         // given
         val decision = Decision()
         val products = arrayListOf(Products(productFamily = "PF_CC_HOMER_POLZA"))
-        val application = Application(persons = Person(1), salesPoint = SalesPoint(products = products))
+        val application = Application(persons = arrayListOf(Person(1)), salesPoint = SalesPoint(products = products))
 
         // when
         MATrialSelectorSCRD.execute(application, decision)
@@ -67,7 +67,7 @@ class MATrialSelectorSCRDTests {
         // given
         val decision = Decision()
         val products = arrayListOf(Products(productFamily = "PF_CC_TW_LG"))
-        val application = Application(persons = Person(0), salesPoint = SalesPoint(products = products))
+        val application = Application(persons = arrayListOf(Person(0)), salesPoint = SalesPoint(products = products))
 
         // when
         MATrialSelectorSCRD.execute(application, decision)
@@ -81,7 +81,7 @@ class MATrialSelectorSCRDTests {
         // given
         val decision = Decision()
         val products = arrayListOf(Products(productFamily = "PF_CC_TW_LG"))
-        val application = Application(persons = Person(1), salesPoint = SalesPoint(products = products))
+        val application = Application(persons = arrayListOf(Person(1)), salesPoint = SalesPoint(products = products))
 
         // when
         MATrialSelectorSCRD.execute(application, decision)

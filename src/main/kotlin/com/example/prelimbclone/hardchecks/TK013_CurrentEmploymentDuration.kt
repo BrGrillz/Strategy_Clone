@@ -7,7 +7,7 @@ import java.time.Period
 class TK013_CurrentEmploymentDuration {
     companion object {
         fun execute(application: Application, month: Int): HardCheck?{
-            val employmentFrom = application.persons?.get(0)?.employment?.employmentFrom
+            val employmentFrom = application.persons[0].employment?.employmentFrom
             return if (
                 employmentFrom != null && application.sysdate != null &&
                 Period.between(employmentFrom.toLocalDate(), application.sysdate.toLocalDate()).months < month &&
