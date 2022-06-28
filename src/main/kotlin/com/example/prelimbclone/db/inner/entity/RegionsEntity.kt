@@ -1,9 +1,10 @@
-package com.example.prelimbclone.domain
+package com.example.prelimbclone.db.inner.entity
 
 import javax.persistence.*
 
 @Entity
-class Regions (
+@Table(name = "regions")
+class RegionsEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Int = 0,

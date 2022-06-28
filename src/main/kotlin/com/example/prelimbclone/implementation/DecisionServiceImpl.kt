@@ -12,19 +12,20 @@ import com.example.prelimbclone.trials.Trials
 import org.springframework.stereotype.Service
 
 @Service
-class DecisionServiceImplementation (private val scoring: Scoring): DecisionService{
+class DecisionServiceImpl (private val scoring: Scoring): DecisionService{
 
     override fun entrypoint(application: Application): Decision?{
         val decision = Decision(application = application)
 
-
+        val timeStart = System.nanoTime()
         SetStrategyDetails.execute(application, decision)
         MATrialSelectorSCRD.execute(application, decision)
         AssignSetScoringDetails.execute(decision)
         scoring.execute(application, decision)
         Trials.execute(application, decision)
         WFSelectorUnion.execute(decision)
-
+        val timeFinish = System.nanoTime()
+        println(timeFinish - timeStart)
         return decision
     }
 }

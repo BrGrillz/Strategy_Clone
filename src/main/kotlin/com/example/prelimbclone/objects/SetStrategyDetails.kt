@@ -14,7 +14,7 @@ class SetStrategyDetails {
                 decision.strategyVersion = "01.10.2018"
                 decision.strategyFlow = "STREET_NEW"
             } else
-                if ((application.persons[0].activeScOffer == 1 || application.persons[0].activeRdOffer == 1)) {
+                if ((application.getPerson().activeScOffer == 1 || application.getPerson().activeRdOffer == 1)) {
                     decision.strategyName = "MultiApproval_DM Current"
                     decision.strategyType = "Champion"
                     decision.strategyVersion = "01.10.2018"

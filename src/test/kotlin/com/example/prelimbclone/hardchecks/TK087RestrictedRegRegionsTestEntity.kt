@@ -4,7 +4,7 @@ import com.example.prelimbclone.models.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-class TK087RestrictedRegRegionsTest{
+class TK087RestrictedRegRegionsTestEntity{
 
     @Test
     fun execute_fromRestrictedRegion() {
