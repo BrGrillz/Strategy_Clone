@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-class RegisterScoreCardPredictorsTests {
+class RegisterScoreCardPredictorsTests (private val registerScoreCardPredictors: RegisterScoreCardPredictors){
 
     @Test
     fun ageYearsReal() {
@@ -37,7 +37,7 @@ class RegisterScoreCardPredictorsTests {
         val application = Application()
 
         // when
-        val result = RegisterScoreCardPredictors.regRegion(application)
+        val result = registerScoreCardPredictors.regRegion(application)
 
         // then
         Assertions.assertEquals(3, result)

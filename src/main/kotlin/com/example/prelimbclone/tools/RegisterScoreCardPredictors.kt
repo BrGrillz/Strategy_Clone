@@ -1,10 +1,33 @@
 package com.example.prelimbclone.tools
 
 import com.example.prelimbclone.models.Application
+import com.example.prelimbclone.models.Predictor
+import com.example.prelimbclone.service.RegionService
+import org.springframework.stereotype.Component
 import java.time.Period
 
+@Component
+class RegisterScoreCardPredictors(
+    private val regionService: RegionService
+) {
+    fun regRegion(application: Application): Predictor? {
+        val code = if (application.persons[0].registeredAddress?.region != null)
+            application.persons[0].registeredAddress?.region
+        else
+            application.persons[0].registeredAddress?.regionName
+        val town = application.persons[0].registeredAddress?.town
+        val result: Int?
 
-class RegisterScoreCardPredictors {
+        return if (!code.isNullOrEmpty() && !town.isNullOrEmpty()) {
+            result = regionService.getResultByCodeAndCity(code, town)
+            Predictor("regRegion", result, result)
+        }
+        else if (!code.isNullOrEmpty()) {
+            result = regionService.getResultByCode(code)
+            Predictor("regRegion", result, result)
+        }
+        else null
+    }
     companion object {
 
         fun ageYearsReal(application: Application): Int? {
@@ -15,14 +38,6 @@ class RegisterScoreCardPredictors {
 
         fun education(application: Application): String? {
             return application.persons[0].education
-        }
-
-        fun regRegion(application: Application): Int {
-            return when (application.persons[0].registeredAddress?.region){
-                "77" -> 2
-                "36" -> 1
-                else -> 3
-            }
         }
 
         fun cbActDel(application: Application): Double {
