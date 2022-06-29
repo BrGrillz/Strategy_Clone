@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import java.time.LocalDateTime
 import java.time.Period
 
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class Decision(
     var strategyType: String? = null,
@@ -19,6 +20,7 @@ data class Decision(
     var workflowLineID: String? = null,
     var rejectReason: String? = null,
     var finalRiskGroup: Int? = null,
+    var duration: Long = 0,
     @JsonIgnore
     val application: Application? = null,
     @JsonIgnore

@@ -5,7 +5,6 @@ import com.example.prelimbclone.models.HardCheck
 
 class TK103_CB_Actual_Delinquency {
     companion object{
-        // НЕ КАК В БЛЕЙЗЕ
         fun execute(sumOverdue: Int, maxDaysOverdue: Int, application: Application): HardCheck?{
             return if (application.credit?.creditBureau?.creditData != null ){
                 val sumCreditResult = application.credit.creditBureau.creditData.sumOf {
