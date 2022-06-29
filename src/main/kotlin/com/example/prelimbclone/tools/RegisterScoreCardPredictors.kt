@@ -3,6 +3,7 @@ package com.example.prelimbclone.tools
 import com.example.prelimbclone.db.inner.repo.RegionRepository
 import com.example.prelimbclone.models.Application
 import com.example.prelimbclone.models.Predictor
+import com.example.prelimbclone.models.Region
 import org.springframework.stereotype.Component
 import java.time.Period
 
@@ -19,17 +20,11 @@ class RegisterScoreCardPredictors(
         val result: Int?
 
         return if (!code.isNullOrEmpty() && !town.isNullOrEmpty()) {
-            val timeStart = System.nanoTime()
             result = regionRepository.findResultByRegionCodeContainsAndRegionCityContains(code.lowercase(), town.lowercase())?.result
-            val timeFinish = System.nanoTime()
-            println("db ${timeFinish - timeStart}")
             Predictor("regRegion", result, result)
         }
         else if (!code.isNullOrEmpty()) {
-            val timeStart = System.nanoTime()
             result = regionRepository.findResultByRegionCodeContains(code.lowercase())?.result
-            val timeFinish = System.nanoTime()
-            println("db ${timeFinish - timeStart}")
             Predictor("regRegion", result, result)
         }
         else null
@@ -54,6 +49,44 @@ class RegisterScoreCardPredictors(
                 }
             }
             return tmpResult
+        }
+        fun regRegion(application: Application): Predictor? {
+            val region = if (application.getPerson().registeredAddress?.region != null)
+                application.getPerson().registeredAddress?.region
+            else
+                application.getPerson().registeredAddress?.regionName
+            val town = application.getPerson().registeredAddress?.town
+            var predictorValue = 0
+
+
+            val arrayOfRegions1 = mapOf(
+                arrayListOf(
+                    Region("52","кировская"),
+                    Region("87","чукотский"),
+                    Region("77","москва"),
+                    Region("50","московская"),
+                    Region("39","калининградская"),
+                    Region("47","ленинградская"),
+                    Region("78","[%санкт%петербург%]"),
+                    Region("24","норильск"),
+                    Region("51","мурманская"),
+                    Region("78","мурманская"),
+                ) to 1,
+            )
+            return if (!region.isNullOrEmpty()) {
+                arrayOfRegions1.entries.forEach {
+                        (it1, it2) ->
+                    if (it1.find {
+                            if (!it.regionTown.isNullOrEmpty()){
+                                it.regionCode.toRegex().containsMatchIn(region) &&
+                                        it.regionTown.toRegex().containsMatchIn(region)
+                            } else it.regionCode.toRegex().containsMatchIn(region)
+                        } != null)
+                        predictorValue = it2
+                }
+                Predictor("regRegion", predictorValue, predictorValue)
+            }
+            else null
         }
     }
 }

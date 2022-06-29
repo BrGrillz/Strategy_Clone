@@ -1,7 +1,6 @@
 package com.example.prelimbclone.scoring
 
 import com.example.prelimbclone.models.Application
-import com.example.prelimbclone.models.Predictor
 import com.example.prelimbclone.models.ScoreFunction
 import com.example.prelimbclone.tools.RegisterScoreCardPredictors
 import com.example.prelimbclone.tools.Tools.Companion.calculatePredictor
@@ -14,11 +13,12 @@ class ScoreCards (private val registerScoreCardPredictors: RegisterScoreCardPred
         var initialScore = 50.0
         val ageYearsReal = calculatePredictor("ageYearsReal", scoreFunction, application)
         val education = calculatePredictor("education", scoreFunction, application)
-        var regRegion: Predictor? = null
-        registerScoreCardPredictors.regRegion(application)?.let {
-            scoreFunction.predictors?.add(it)
-            regRegion = it
-        }
+        val regRegion = calculatePredictor("regRegion", scoreFunction, application)
+//        var regRegion: Predictor? = null
+//        registerScoreCardPredictors.regRegion(application)?.let {
+//            scoreFunction.predictors?.add(it)
+//            regRegion = it
+//        }
 
         when (ageYearsReal.value){
             in 65..200 -> initialScore += 5
@@ -32,7 +32,7 @@ class ScoreCards (private val registerScoreCardPredictors: RegisterScoreCardPred
             "2" -> initialScore += 25
             else -> initialScore -= 1
         }
-        when (regRegion?.value){
+        when (regRegion.value){
             1 -> initialScore -= 5
             3 -> initialScore += 15
             2 -> initialScore += 25
@@ -44,11 +44,12 @@ class ScoreCards (private val registerScoreCardPredictors: RegisterScoreCardPred
     fun `Client GM 4 201908`(application: Application, scoreFunction: ScoreFunction){
         var initialScore = 100.0
         val ageYearsReal = calculatePredictor("ageYearsReal", scoreFunction, application)
-        var regRegion: Predictor? = null
-        registerScoreCardPredictors.regRegion(application)?.let {
-            scoreFunction.predictors?.add(it)
-            regRegion = it
-        }
+        val regRegion = calculatePredictor("regRegion", scoreFunction, application)
+//        var regRegion: Predictor? = null
+//        registerScoreCardPredictors.regRegion(application)?.let {
+//            scoreFunction.predictors?.add(it)
+//            regRegion = it
+//        }
         val cbActDel = calculatePredictor("cbActDel", scoreFunction, application)
 
         when (ageYearsReal.value){
@@ -57,7 +58,7 @@ class ScoreCards (private val registerScoreCardPredictors: RegisterScoreCardPred
             in 18..45 -> initialScore += 30
             else -> initialScore -= 2
         }
-        when (regRegion?.value){
+        when (regRegion.value){
             1 -> initialScore -= 5
             3 -> initialScore += 15
             2 -> initialScore += 25
@@ -75,11 +76,12 @@ class ScoreCards (private val registerScoreCardPredictors: RegisterScoreCardPred
     fun `Application 4 0`(application: Application, scoreFunction: ScoreFunction){
         var initialScore = 25.0
         val ageYearsReal = calculatePredictor("ageYearsReal", scoreFunction, application)
-        var regRegion: Predictor? = null
-        registerScoreCardPredictors.regRegion(application)?.let {
-            scoreFunction.predictors?.add(it)
-            regRegion = it
-        }
+        val regRegion = calculatePredictor("regRegion", scoreFunction, application)
+//        var regRegion: Predictor? = null
+//        registerScoreCardPredictors.regRegion(application)?.let {
+//            scoreFunction.predictors?.add(it)
+//            regRegion = it
+//        }
 
 
         when (ageYearsReal.value){
@@ -88,7 +90,7 @@ class ScoreCards (private val registerScoreCardPredictors: RegisterScoreCardPred
             in 18..45 -> initialScore += 11
             else -> initialScore -= 1
         }
-        when (regRegion?.value){
+        when (regRegion.value){
             1 -> initialScore -= 4
             3 -> initialScore += 5
             2 -> initialScore += 6
