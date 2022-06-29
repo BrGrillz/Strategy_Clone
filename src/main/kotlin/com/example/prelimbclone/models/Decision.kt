@@ -1,10 +1,11 @@
 package com.example.prelimbclone.models
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonInclude
 import java.time.LocalDateTime
 import java.time.Period
 
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 data class Decision(
     var strategyType: String? = null,
     var strategyName: String? = null,

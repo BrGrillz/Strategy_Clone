@@ -10,22 +10,22 @@ class WFSelectorTrial {
             when{
                 trial.hcDetails.hardCheck.isNotEmpty() -> {
                     trial.wfDetails.decision = "REJECT"
-                    trial.wfDetails.lineID = "HC_REJECT"
+                    trial.WFLineID += "HC_REJECT;"
                     trial.wfDetails.rejectReason = "HC"
                 }
                 trial.rgDetails.riskGroup == 9 -> {
                     trial.wfDetails.decision = "REJECT"
-                    trial.wfDetails.lineID = "SCO_REJECT"
+                    trial.WFLineID += "SCO_REJECT;"
                     trial.wfDetails.rejectReason = "SCO"
                 }
                 trial.rgDetails.riskGroup == 0 -> {
                     trial.wfDetails.decision = "REJECT"
-                    trial.wfDetails.lineID = "SCOFR_REJECT"
+                    trial.WFLineID += "SCOFR_REJECT;"
                     trial.wfDetails.rejectReason = "SCOFR"
                 }
                 else -> {
                     trial.wfDetails.decision = "CONTINUE"
-                    trial.wfDetails.lineID = "ELSE_CONTINUE"
+                    trial.WFLineID += "ELSE_CONTINUE;"
                 }
             }
         }
