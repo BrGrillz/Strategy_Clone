@@ -20,7 +20,7 @@ internal class HCTableTest{
 
         // then
         assertEquals(arrayListOf(HardCheck("TK_EMPDUR_3", "EMPDUR", "Applicant is not employed more than 3 months")),trial.hcDetails.hardCheck)
-        assertEquals(arrayListOf("COMMON_LINE_HCS", "CC_POLZA_HCS"), trial.hcDetails.lineID)
+        assertEquals("COMMON_LINE_HCS;CC_POLZA_HCS;", trial.HCLineID)
     }
 
     @Test
@@ -35,6 +35,6 @@ internal class HCTableTest{
 
         // then
         assertEquals(ArrayList<Any>(),trial.hcDetails.hardCheck)
-        assertEquals(arrayListOf("COMMON_LINE_HCS", "CC_POLZA_HCS"), trial.hcDetails.lineID)
+        assertEquals("COMMON_LINE_HCS;CC_POLZA_HCS;", trial.HCLineID)
     }
 }

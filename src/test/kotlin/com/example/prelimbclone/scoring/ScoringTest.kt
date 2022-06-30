@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
-class ScoringTest (private val scoring: Scoring){
+class ScoringTest {
 
     @Test
     fun execute_test() {
@@ -19,7 +19,7 @@ class ScoringTest (private val scoring: Scoring){
         val decision = Decision(score = Score(scoreFunction = arrayOfScoreFunctions), trials = arrayOfTrials)
 
         // when
-        scoring.execute(application, decision)
+        Scoring.execute(application, decision)
 
         // then
         var flag = true
@@ -27,7 +27,7 @@ class ScoringTest (private val scoring: Scoring){
             if (it.scoringDetails.scoreFunction != decision.score.primaryScoreFunction || it.scoringDetails.scoreValue != decision.score.primaryScore){flag = false}
         }
 
-        assertEquals(63.0, decision.score.primaryScore)
+        assertEquals(43.0, decision.score.primaryScore)
         assertEquals("ACQ GM 4 201912", decision.score.primaryScoreFunction)
         assertEquals(true, flag)
     }

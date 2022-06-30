@@ -19,7 +19,7 @@ class WFSelectorTrialTest{
         // then
         assertEquals("MS", decision.creditType)
         assertEquals("REJECT", trial.wfDetails.decision)
-        assertEquals("HC_REJECT", trial.wfDetails.lineID)
+        assertEquals("HC_REJECT;", trial.WFLineID)
         assertEquals("HC", trial.wfDetails.rejectReason)
     }
 
@@ -35,7 +35,7 @@ class WFSelectorTrialTest{
         // then
         assertEquals("MS", decision.creditType)
         assertEquals("REJECT", trial.wfDetails.decision)
-        assertEquals("SCO_REJECT", trial.wfDetails.lineID)
+        assertEquals("SCO_REJECT;", trial.WFLineID)
         assertEquals("SCO", trial.wfDetails.rejectReason)
     }
 
@@ -51,7 +51,7 @@ class WFSelectorTrialTest{
         // then
         assertEquals("MS", decision.creditType)
         assertEquals("REJECT", trial.wfDetails.decision)
-        assertEquals("SCOFR_REJECT", trial.wfDetails.lineID)
+        assertEquals("SCOFR_REJECT;", trial.WFLineID)
         assertEquals("SCOFR", trial.wfDetails.rejectReason)
     }
 
@@ -67,7 +67,7 @@ class WFSelectorTrialTest{
         // then
         assertEquals("MS", decision.creditType)
         assertEquals("CONTINUE", trial.wfDetails.decision)
-        assertEquals("ELSE_CONTINUE", trial.wfDetails.lineID)
+        assertEquals("ELSE_CONTINUE;", trial.WFLineID)
         assertEquals(null, trial.wfDetails.rejectReason)
     }
 }

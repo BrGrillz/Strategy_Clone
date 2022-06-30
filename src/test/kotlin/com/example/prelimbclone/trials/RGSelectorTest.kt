@@ -16,8 +16,8 @@ class RGSelectorTest{
 
         // then
         assertEquals(0.9561, trial.rgDetails.cutOffValue)
-        assertEquals(9, trial.rgDetails.riskGroup)
-        assertEquals("REJ_TR_CL_STND_STREET", trial.rgDetails.lineID)
+        assertEquals(1, trial.rgDetails.riskGroup)
+        assertEquals("REJ_TR_CL_STND_STREET;", trial.RGLineID)
     }
     @Test
     fun execute_withoutNew_applyCutoff() {
@@ -29,7 +29,7 @@ class RGSelectorTest{
 
         // then
         assertEquals(0.9423, trial.rgDetails.cutOffValue)
-        assertEquals(9, trial.rgDetails.riskGroup)
-        assertEquals("REJ_TR_CL_STND_XSELL", trial.rgDetails.lineID)
+        assertEquals(1, trial.rgDetails.riskGroup)
+        assertEquals("REJ_TR_CL_STND_XSELL;", trial.RGLineID)
     }
 }

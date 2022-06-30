@@ -38,8 +38,7 @@ class MATrialSelectorSCRDTests {
     fun execute_PF_CC_HOMER_POLZA_noOffer() {
         // given
         val decision = Decision()
-        val products = arrayListOf(Products(productFamily = "PF_CC_HOMER_POLZA"))
-        val application = Application(persons = arrayListOf(Person(0)), salesPoint = SalesPoint(products = products))
+        val application = Application(persons = arrayListOf(Person(0)))
 
         // when
         MATrialSelectorSCRD.execute(application, decision)
@@ -66,8 +65,7 @@ class MATrialSelectorSCRDTests {
     fun execute_PF_CC_TW_LG_noOffer() {
         // given
         val decision = Decision()
-        val products = arrayListOf(Products(productFamily = "PF_CC_TW_LG"))
-        val application = Application(persons = arrayListOf(Person(0)), salesPoint = SalesPoint(products = products))
+        val application = Application(persons = arrayListOf(Person(0)))
 
         // when
         MATrialSelectorSCRD.execute(application, decision)

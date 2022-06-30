@@ -1,59 +1,29 @@
 package com.example.prelimbclone.tools
 
-import com.example.prelimbclone.db.inner.repo.RegionRepository
 import com.example.prelimbclone.models.Application
-import com.example.prelimbclone.models.Predictor
 import com.example.prelimbclone.models.Regions
 import org.springframework.stereotype.Component
 import java.time.Period
 
 @Component
-class RegisterScoreCardPredictors(
-    private val regionRepository: RegionRepository,
-    private val regions: Regions,
-) {
-    fun regRegionTable(application: Application): Predictor? {
-        val code = if (application.getPerson().registeredAddress?.region != null)
-            application.getPerson().registeredAddress?.region
-        else
-            application.getPerson().registeredAddress?.regionName
-        val town = application.getPerson().registeredAddress?.town
-        val result: Int?
-
-        return if (!code.isNullOrEmpty() && !town.isNullOrEmpty()) {
-            result = regionRepository.findResultByRegionCodeContainsAndRegionCityContains(code.lowercase(),
-                town.lowercase())?.result
-            Predictor("regRegion", result, result)
-        } else if (!code.isNullOrEmpty()) {
-            result = regionRepository.findResultByRegionCodeContains(code.lowercase())?.result
-            Predictor("regRegion", result, result)
-        } else null
-    }
-
-    fun regRegionCode(application: Application): Predictor? {
-        val region = if (application.getPerson().registeredAddress?.region != null)
-            application.getPerson().registeredAddress?.region
-        else
-            application.getPerson().registeredAddress?.regionName
-        val town = application.getPerson().registeredAddress?.town
-        var predictorValue: Int = -1
-
-        return if (!region.isNullOrEmpty()) {
-            regions.mapOfRegions.entries.forEach { (it1, it2) ->
-                predictorValue = if (
-                    !town.isNullOrEmpty() &&
-                    it1.regionCode.toRegex().matches(region) &&
-                    it1.regionTown?.toRegex()?.matches(town) == true
-                ) it2
-                else if (it1.regionCode.toRegex().matches(region))
-                    it2
-                else -1
-            }
-            Predictor("regRegion", predictorValue, predictorValue)
-        }
-        else Predictor("regRegion", predictorValue, predictorValue)
-    }
-
+class RegisterScoreCardPredictors {
+//    fun regRegionTable(application: Application): Predictor? {
+//        val code = if (application.getPerson().registeredAddress?.region != null)
+//            application.getPerson().registeredAddress?.region
+//        else
+//            application.getPerson().registeredAddress?.regionName
+//        val town = application.getPerson().registeredAddress?.town
+//        val result: Int?
+//
+//        return if (!code.isNullOrEmpty() && !town.isNullOrEmpty()) {
+//            result = regionRepository.findResultByRegionCodeContainsAndRegionCityContains(code.lowercase(),
+//                town.lowercase())?.result
+//            Predictor("regRegion", result, result)
+//        } else if (!code.isNullOrEmpty()) {
+//            result = regionRepository.findResultByRegionCodeContains(code.lowercase())?.result
+//            Predictor("regRegion", result, result)
+//        } else null
+//    }
     companion object {
 
         fun ageYearsReal(application: Application): Int? {
@@ -74,6 +44,32 @@ class RegisterScoreCardPredictors(
                 }
             }
             return tmpResult
+        }
+
+        fun regRegionCode(application: Application): Int {
+            val region = if (application.getPerson().registeredAddress?.region != null)
+                application.getPerson().registeredAddress?.region
+            else
+                application.getPerson().registeredAddress?.regionName
+            val town = application.getPerson().registeredAddress?.town
+            val regionsMap = Regions()
+            var value = -1
+
+            regionsMap.mapOfRegions.entries.forEach { (it1, it2) ->
+                value = if (
+                    !town.isNullOrEmpty() && !region.isNullOrEmpty() &&
+                    it1.regionCode.toRegex().containsMatchIn(region.lowercase()) &&
+                    it1.regionTown?.toRegex()?.containsMatchIn(town.lowercase()) == true &&
+                    value<it2
+                ) it2
+                else if (
+                    !region.isNullOrEmpty() &&
+                    it1.regionCode.toRegex().containsMatchIn(region.lowercase()) &&
+                    value<it2
+                ) it2
+                else value
+            }
+            return value
         }
     }
 }

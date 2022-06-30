@@ -7,12 +7,12 @@ import com.example.prelimbclone.objects.WFSelectorUnion
 import com.example.prelimbclone.scoring.AssignSetScoringDetails
 import com.example.prelimbclone.scoring.Scoring
 import com.example.prelimbclone.service.DecisionService
-import com.example.prelimbclone.top.trials.MATrialSelectorSCRD
+import com.example.prelimbclone.trials.MATrialSelectorSCRD
 import com.example.prelimbclone.trials.Trials
 import org.springframework.stereotype.Service
 
 @Service
-class DecisionServiceImpl (private val scoring: Scoring): DecisionService{
+class DecisionServiceImpl: DecisionService{
 
     override fun entrypoint(application: Application): Decision?{
         val timeStart = System.currentTimeMillis()
@@ -21,7 +21,7 @@ class DecisionServiceImpl (private val scoring: Scoring): DecisionService{
         SetStrategyDetails.execute(application, decision)
         MATrialSelectorSCRD.execute(application, decision)
         AssignSetScoringDetails.execute(decision)
-        scoring.execute(application, decision)
+        Scoring.execute(application, decision)
         Trials.execute(application, decision)
         WFSelectorUnion.execute(decision)
 
