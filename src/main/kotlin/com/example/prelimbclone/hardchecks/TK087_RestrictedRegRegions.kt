@@ -8,7 +8,7 @@ class TK087_RestrictedRegRegions {
     companion object{
         fun execute(region: String, application: Application, decision: Decision): HardCheck?{
             return if (
-                (application.persons[0].contactAddress?.region == region || application.persons[0].registeredAddress?.region == region) &&
+                (application.getPerson().contactAddress?.region == region || application.getPerson().registeredAddress?.region == region) &&
                 decision.creditType == "SS" &&
                 application.salesPoint?.sellerplaceTown == "Грозный" &&
                 application.salesPoint.sellerplaceCode in listOf(940001, 940002, 940006)

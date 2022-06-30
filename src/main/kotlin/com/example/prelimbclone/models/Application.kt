@@ -11,5 +11,7 @@ data class Application(
     val persons: ArrayList<Person> = arrayListOf(Person()),
     val trial: ArrayList<Trial> = ArrayList(),
     val salesPoint: SalesPoint? = null,
-)
+) {
+    fun getPerson() = persons[0]
+}
 

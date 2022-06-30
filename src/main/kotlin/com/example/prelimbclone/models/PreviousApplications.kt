@@ -9,6 +9,6 @@ data class PreviousApplications(
 //    val isTwPartnerLimitAvailable: Int?,
 //    val approvalData: ApprovalData?,
 //    val appArray: ArrayList<AppArray>?,
-//    val persons[0]: ArrayList<Person>?,
+//    val getPerson(): ArrayList<Person>?,
 //    val personContact: ArrayList<PersonContact>?,
 )

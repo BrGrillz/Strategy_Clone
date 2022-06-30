@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-class RegisterScoreCardPredictorsTests {
+class RegisterScoreCardPredictorsTests (){
 
     @Test
     fun ageYearsReal() {
@@ -31,17 +31,43 @@ class RegisterScoreCardPredictorsTests {
         // then
         Assertions.assertEquals("2", result)
     }
+
     @Test
-    fun regRegion() {
+    fun regRegion_NoRegionCode_NoRegionTown() {
         // given
         val application = Application()
 
         // when
-        val result = RegisterScoreCardPredictors.regRegion(application)
+        val result = RegisterScoreCardPredictors.regRegionCode(application)
 
         // then
-        Assertions.assertEquals(3, result)
+        Assertions.assertEquals(-1, result)
     }
+
+    @Test
+    fun regRegion_WithRegionCode_NoRegionTown() {
+        // given
+        val application = Application(persons = arrayListOf(Person(registeredAddress = RegisteredAddress("77"))))
+
+        // when
+        val result = RegisterScoreCardPredictors.regRegionCode(application)
+
+        // then
+        Assertions.assertEquals(1, result)
+    }
+
+    @Test
+    fun regRegion_WithRegionCode_WithRegionTown() {
+        // given
+        val application = Application(persons = arrayListOf(Person(registeredAddress = RegisteredAddress(regionName = "город красноярский округ", town = "город крсноярск "))))
+
+        // when
+        val result = RegisterScoreCardPredictors.regRegionCode(application)
+
+        // then
+        Assertions.assertEquals(2, result)
+    }
+
     @Test
     fun `cbActDel no overdue`() {
         // given
