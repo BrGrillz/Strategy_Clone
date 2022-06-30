@@ -8,9 +8,7 @@ class WFSelectorTrialTest{
     @Test
     fun execute_HCReject(){
         // given
-        val trial = Trial("", "", "", hcDetails = HCDetails(arrayListOf(
-            HardCheck()
-        )))
+        val trial = Trial("", "", "", hcDetails = HCDetails("hc"))
         val decision = Decision()
 
         // when
@@ -26,7 +24,7 @@ class WFSelectorTrialTest{
     @Test
     fun execute_SCOReject(){
         // given
-        val trial = Trial("", "", "", hcDetails = HCDetails(arrayListOf()), rgDetails = RGDetails(riskGroup = 9))
+        val trial = Trial("", "", "", rgDetails = RGDetails(riskGroup = 9))
         val decision = Decision()
 
         // when
@@ -42,7 +40,7 @@ class WFSelectorTrialTest{
     @Test
     fun execute_SCOFRReject(){
         // given
-        val trial = Trial("", "", "", hcDetails = HCDetails(arrayListOf()), rgDetails = RGDetails(riskGroup = 0))
+        val trial = Trial("", "", "", rgDetails = RGDetails(riskGroup = 0))
         val decision = Decision()
 
         // when

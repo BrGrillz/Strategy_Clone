@@ -8,7 +8,7 @@ class WFSelectorTrial {
         fun execute(trial: Trial, decision: Decision){
             decision.creditType = "MS"
             when{
-                trial.hcDetails.hardCheck.isNotEmpty() -> {
+                trial.hcDetails.hardCheck.isNotEmpty() == true -> {
                     trial.wfDetails.decision = "REJECT"
                     trial.WFLineID += "HC_REJECT;"
                     trial.wfDetails.rejectReason = "HC"

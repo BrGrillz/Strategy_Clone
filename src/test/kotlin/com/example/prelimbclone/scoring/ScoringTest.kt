@@ -10,13 +10,9 @@ class ScoringTest {
     @Test
     fun execute_test() {
         // given
-        val arrayOfScoreFunctions = arrayListOf(
-            ScoreFunction("ACQ GM 4 201912", 0),
-            ScoreFunction("Application 4 0", 1)
-        )
         val arrayOfTrials = arrayListOf(Trial("TR_CC_HOMER_POLZA_STND", "", ""))
         val application = Application()
-        val decision = Decision(score = Score(scoreFunction = arrayOfScoreFunctions), trials = arrayOfTrials)
+        val decision = Decision(score = Score(score1Function = ScoreFunction("ACQ GM 4 201912", 0), score2Function = ScoreFunction("Application 4 0", 1)), trials = arrayOfTrials)
 
         // when
         Scoring.execute(application, decision)
@@ -27,8 +23,8 @@ class ScoringTest {
             if (it.scoringDetails.scoreFunction != decision.score.primaryScoreFunction || it.scoringDetails.scoreValue != decision.score.primaryScore){flag = false}
         }
 
-        assertEquals(43.0, decision.score.primaryScore)
-        assertEquals("ACQ GM 4 201912", decision.score.primaryScoreFunction)
+        assertEquals(17.0, decision.score.primaryScore)
+        assertEquals("Application 4 0", decision.score.primaryScoreFunction)
         assertEquals(true, flag)
     }
 }

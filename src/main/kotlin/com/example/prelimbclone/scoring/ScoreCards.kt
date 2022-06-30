@@ -3,9 +3,8 @@ package com.example.prelimbclone.scoring
 import com.example.prelimbclone.models.Application
 import com.example.prelimbclone.models.ScoreFunction
 import com.example.prelimbclone.tools.Tools.Companion.calculatePredictor
-import org.springframework.stereotype.Component
 
-@Component
+
 class ScoreCards {
     companion object {
         fun `ACQ GM 4 201912`(application: Application, scoreFunction: ScoreFunction) {
