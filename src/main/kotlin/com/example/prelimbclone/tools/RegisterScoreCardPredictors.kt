@@ -32,9 +32,7 @@ class RegisterScoreCardPredictors {
             else null
         }
 
-        fun education(application: Application): String? {
-            return application.getPerson().education
-        }
+        fun education(application: Application): String? = application.getPerson().education
 
         fun cbActDel(application: Application): Double {
             var tmpResult = 0.0
