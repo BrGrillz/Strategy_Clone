@@ -20,7 +20,7 @@ data class Decision(
     var workflowLineID: String? = null,
     var rejectReason: String? = null,
     var finalRiskGroup: Int? = null,
-    var duration: Long = 0,
+    var duration: Double = 0.0,
     @JsonIgnore
     val application: Application? = null,
     @JsonIgnore

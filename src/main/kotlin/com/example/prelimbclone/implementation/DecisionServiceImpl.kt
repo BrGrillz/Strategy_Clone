@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service
 class DecisionServiceImpl: DecisionService{
 
     override fun entrypoint(application: Application): Decision?{
-        val timeStart = System.currentTimeMillis()
+        val timeStart = System.nanoTime()
         val decision = Decision(application = application)
 
         SetStrategyDetails.execute(application, decision)
@@ -25,7 +25,7 @@ class DecisionServiceImpl: DecisionService{
         Trials.execute(application, decision)
         WFSelectorUnion.execute(decision)
 
-        decision.duration = System.currentTimeMillis() - timeStart
+        decision.duration = (System.nanoTime() - timeStart)/1000000000.0
 
         return decision
     }
