@@ -19,8 +19,8 @@ class TK103_CB_Actual_Delinquency {
             } else null
         }
 
-        private fun getSumOverdue(creditBureauData: ArrayList<CreditBureauData>, application: Application): Int{
-            var result = 0
+        private fun getSumOverdue(creditBureauData: ArrayList<CreditBureauData>, application: Application): Double{
+            var result = 0.0
             creditBureauData.forEach {
                 if (
                     it.creditJoin != null && it.creditJoin == 1 &&
@@ -29,7 +29,7 @@ class TK103_CB_Actual_Delinquency {
                             Period.between(it.creditUpdate, application.sysdate.toLocalDate()).months > 24)
                 ){
                     result += if (it.creditSumOverdue == null || (it.creditOwner != null && it.creditOwner == 1 && it.creditType != null && it.creditType != 3))
-                        0
+                        0.0
                     else it.creditSumOverdue
                 }
             }

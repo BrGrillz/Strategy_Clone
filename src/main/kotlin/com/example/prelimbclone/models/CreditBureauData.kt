@@ -5,7 +5,7 @@ import java.time.LocalDate
 
 data class CreditBureauData(
     val creditJoin: Int? = null,
-    val creditSumOverdue: Int? = null,
+    val creditSumOverdue: Double? = null,
     val contractSource: String? = null,
     @JsonFormat(pattern = "dd.MM.yyyy HH:mm:ss")
     val creditUpdate: LocalDate? = null,

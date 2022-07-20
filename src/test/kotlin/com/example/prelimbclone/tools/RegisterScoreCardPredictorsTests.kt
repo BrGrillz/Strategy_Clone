@@ -72,9 +72,9 @@ class RegisterScoreCardPredictorsTests (){
     fun `cbActDel no overdue`() {
         // given
         val arrayOfCreditData = arrayListOf(
-            CreditBureauData(2, 0),
-            CreditBureauData(2, 2),
-            CreditBureauData(1, 0),
+            CreditBureauData(2, 0.0),
+            CreditBureauData(2, 2.0),
+            CreditBureauData(1, 0.0),
         )
         val application = Application(credit = Credit(creditBureau = CreditBureau(arrayOfCreditData)))
 
@@ -88,10 +88,10 @@ class RegisterScoreCardPredictorsTests (){
     fun `cbActDel with multiple overdue`() {
         // given
         val arrayOfCreditData = arrayListOf(
-            CreditBureauData(1, 3),
-            CreditBureauData(2, 0),
-            CreditBureauData(2, 2),
-            CreditBureauData(1, 0),
+            CreditBureauData(1, 3.0),
+            CreditBureauData(2, 0.0),
+            CreditBureauData(2, 2.0),
+            CreditBureauData(1, 0.0),
         )
         val application = Application(credit = Credit(creditBureau = CreditBureau(arrayOfCreditData)))
 
