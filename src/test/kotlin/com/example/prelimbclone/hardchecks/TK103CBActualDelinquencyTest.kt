@@ -12,8 +12,8 @@ class TK103CBActualDelinquencyTest{
         val maxDaysOverdue = 10
         val sumOverdue = 200
         val application = Application(credit = Credit(creditBureau = CreditBureau(creditData = arrayListOf(
-            CreditBureauData(creditSumOverdue = 100, creditDayOverdue = 10, creditJoin = 1),
-            CreditBureauData(creditSumOverdue = 200, creditDayOverdue = 5, creditJoin = 1),
+            CreditBureauData(creditSumOverdue = 100.0, creditDayOverdue = 10, creditJoin = 1),
+            CreditBureauData(creditSumOverdue = 200.0, creditDayOverdue = 5, creditJoin = 1),
         ))))
 
         // when
@@ -32,8 +32,8 @@ class TK103CBActualDelinquencyTest{
         val maxDaysOverdue = 20
         val sumOverdue = 1000
         val application = Application(credit = Credit(creditBureau = CreditBureau(creditData = arrayListOf(
-            CreditBureauData(creditSumOverdue = 100, creditDayOverdue = 10),
-            CreditBureauData(creditSumOverdue = 200, creditDayOverdue = 5),
+            CreditBureauData(creditSumOverdue = 100.0, creditDayOverdue = 10),
+            CreditBureauData(creditSumOverdue = 200.0, creditDayOverdue = 5),
         ))))
 
 
