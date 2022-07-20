@@ -25,8 +25,7 @@ class DecisionServiceImpl: DecisionService{
         Trials.execute(application, decision)
         WFSelectorUnion.execute(decision)
 
-        decision.duration = (System.nanoTime() - timeStart)/1000000000.0
-
+        decision.duration = (System.nanoTime() - timeStart)/1000000.0
         return decision
     }
 }
